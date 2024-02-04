@@ -1,0 +1,130 @@
+.heading{
+    position: absolute;
+    left: 310px;
+    top: 100px;
+    font-size: 2em;
+}
+
+.form-content{
+    position: absolute;
+    top: 160px;
+    left: 310px;
+    width: 78%;
+    /* height: 100vh; */
+    background-color: white;
+}
+
+.row-2{
+    display: flex;
+    gap: 40px;
+}
+.row-3{
+    display: flex;
+    gap: 148px;
+}
+
+.form-content form{
+    padding: 20px 30px;
+}
+
+.form-content form h3{
+    color: rgb(11, 11, 84);
+    margin-bottom: 30px;
+}
+
+label{
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.row-2 input{
+    font-size: 1em;
+    width: 478px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+.row-2 input[type="file"]{
+    border: 1px solid black;
+}
+
+.row-2 select{
+    border: 1px solid black;
+    font-size: 1em;
+    width: 510px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+.row-3 input{
+    font-size: 1em;
+    width: 250px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+.row-3 select{
+    font-size: 1em;
+    width: 250px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+textarea{
+    font-size: 1em;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+table{
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-spacing: 20px;
+    margin-bottom: 20px;
+}
+table input{
+    width: 160px;
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+
+h4{
+    padding: 20px 0px;
+    border-bottom: 1px solid grey;
+}
+
+p{
+    margin: 10px 0px;
+    padding: 5px 10px;
+    font-size: 1.1em;
+    font-style: italic;
+}
+.signature input{
+    font-size: 1em;
+    width: 200px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+.submit input{
+    width: 200px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: #0b0d92d2;
+    border: none;
+    color: white;
+}
+.submit input:hover{
+    background-color: #0b0d929e;
+    cursor: pointer;
+  }
+  .submit input:active{
+    color: yellow;
+  }

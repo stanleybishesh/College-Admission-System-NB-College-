@@ -1,14 +1,13 @@
 <?php
 session_start();
 error_reporting(0);
-include('includes/dbconnection.php');
+include('includes/db.php');
 if (strlen($_SESSION['uid']==0)) {
   header('location:logout.php');
   } else{
 
-
-
   ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,9 +39,9 @@ if (strlen($_SESSION['uid']==0)) {
                 <div class="card-body">
                     <?php
 $uid=$_SESSION['uid'];
-$ret=mysqli_query($con,"select FullName from tbluser where ID='$uid'");
+$ret=mysqli_query($con,"select fullname from users where ID='$uid'");
 $row=mysqli_fetch_array($ret);
-$name=$row['FullName'];
+$name=$row['fullname'];
 
 ?>
                     <h4 style="color: blue; text-align: center;">Welcome !! <?php echo $name;?></h4>

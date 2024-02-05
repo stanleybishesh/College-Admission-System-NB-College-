@@ -45,7 +45,7 @@ button{
     margin-top: 15px;
     border-style: none;
     border-radius: 10px;
-    background-color: cadetblue;
+    background-color: #0b0d92d2;
     color: aliceblue;
     height: 40px;
     padding: 0px 15px;
@@ -53,6 +53,12 @@ button{
 }
 
 button:hover{
-    color: rgb(245, 244, 244);
+    cursor: pointer;
+    color: white;
+    background-color: #0b0d929e;
+}
+button:active{
+    color: yellow;
     background-color: rgb(133, 24, 9);
+    cursor: pointer;
 }

@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="front.css">
     <title>NB COLLEGE</title>
+    <link rel="stylesheet" href="frontstyle.css">
 </head>
+
 <body>
-    <video id="background-video" autoplay loop muted poster="image.jpg">
-        <source src="images/logo.mp4" type="video/mp4">
-       </video>
-       
-    <div class="options">
-        
-            <h1>WELCOME TO OFFICIAL SITE OF NB COLLEGE</h1>
-           <button onclick="location.href='adminlogin.html';">ADMIN</button>
-           <button onclick="location.href='login.html';">STUDENT</button>
-           
-        </div> 
+    <div id="video-container">
+        <video id="intro-video" autoplay muted>
+            <source src="images/logo.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div id="main" class="hidden">
+        <div class="styling">
+            <h1>WELCOME TO OFFICIAL SITE OF NB COLLEGE</h1><br>
+            <button onclick="location.href='adminlogin.html';">ADMIN</button>
+            <button onclick="location.href='login.html';">STUDENT</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                document.getElementById("intro-video").pause();
+                document.getElementById("video-container").classList.add("hidden");
+                document.getElementById("main").classList.remove("hidden");
+            }, 2500);
+        });
+
+    </script>
 </body>
+
 </html>

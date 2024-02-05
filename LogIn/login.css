@@ -45,16 +45,22 @@ button{
     margin-top: 15px;
     border-style: none;
     border-radius: 10px;
-    background-color: cadetblue;
-    color: aliceblue;
+    background-color: #0b0d92d2;
+    color: white;
     height: 40px;
     padding: 0px 15px;
     width: 100%;
 }
 
 button:hover{
+    cursor: pointer;
     color: rgb(245, 244, 244);
+    background-color: #0b0d929e;
+}
+button:active{
+    color: yellow;
     background-color: rgb(133, 24, 9);
+    cursor: pointer;
 }
 .edot{
     padding: 20px;

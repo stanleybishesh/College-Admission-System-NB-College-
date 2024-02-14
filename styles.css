@@ -45,7 +45,7 @@
     font-size: 0.8em;
   }
 
-  a.active,a:hover{
+  .sidebar a.active,.sidebar a:hover{
     font-size: 0.9em;
     border-left: 5px solid white;
     color: #fff;
@@ -79,11 +79,21 @@
     border: none;
     color: white;
   }
+  
   .navbar button:hover{
     background-color: #0b0d929e;
     cursor: pointer;
   }
   .navbar button:active{
     color: yellow;
+  }
+  .logo{
+    display: flex;
+    gap: 20px;
+  }
+  .logo img {
+    max-height: 50px; 
+    width: 34px;
+    height: 34px;
   }
   

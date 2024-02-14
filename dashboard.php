@@ -1,9 +1,9 @@
 <?php
 session_start();
 error_reporting(0);
-include('includes/db.php');
+include 'LogIn/db.php';
 if (strlen($_SESSION['uid']==0)) {
-  header('location:logout.php');
+  header('location:LogIn/logout.php');
   } else{
 
   ?>
@@ -39,17 +39,17 @@ if (strlen($_SESSION['uid']==0)) {
                 <div class="card-body">
                     <?php
 $uid=$_SESSION['uid'];
-$ret=mysqli_query($con,"select fullname from users where ID='$uid'");
+$ret=mysqli_query($con,"SELECT fullname FROM users WHERE ID='$uid'");
 $row=mysqli_fetch_array($ret);
-$name=$row['fullname'];
+$fullname=$row['fullname'];
 
 ?>
-                    <h4 style="color: blue; text-align: center;">Welcome !! <?php echo $name;?></h4>
+                    <h4 style="color: blue; text-align: center;">Welcome !! <?php echo $fullname;?></h4>
                           
                 </div>
            
         </div>
-         <a href="logout.php" class="btn btn-outline btn-default">Logout</a>
+         <a href="LogIn/logout.php" class="btn btn-outline btn-default">Logout</a>
     </div>
 
         

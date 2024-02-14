@@ -31,17 +31,21 @@ body {
 button{
 height: 45px;
 width: 20%;
-background-color:rgb(39, 84, 134);
+background-color:#0b0d92d2;
 color: aliceblue;
 border-radius: 15px;
 border-style: none;
 margin-left: 30px;
 margin-right: 30px;
 }
-
-
 button:hover{
     color: rgb(245, 244, 244);
+    background-color: #0b0d929e;
+    cursor: pointer;
+}
+button:active{
+    color: yellow;
     background-color: rgb(133, 24, 9);
     cursor: pointer;
 }
+

@@ -1,3 +1,13 @@
+<?php
+session_start();
+error_reporting(0);
+include '../LogIn/db.php';
+if (strlen($_SESSION['uid']==0)) {
+  header('location:../LogIn/logout.php');
+  } else{
+
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,32 +22,53 @@
 </head>
 
 <body>
+    <?php
+        $uid=$_SESSION['uid'];
+        $ret=mysqli_query($con,"SELECT fullname FROM users WHERE ID='$uid'");
+        $row=mysqli_fetch_array($ret);
+        $fullname=$row['fullname'];
+    ?>
+
     <div class="sidebar">
-        <header>Hello, User</header>
-        <a href="dashboard.html">
+        <header><?php echo $fullname;?></header>
+        <a href="dashboard.php">
             <i class="fas fa-qrcode"></i>
             <span>Dashboard</span>
         </a>
-        <a href="form.html" class="active">
+        <a href="form.php" class="active">
             <i class="fas fa-solid fa-file-invoice"></i>
             <span>Application Form</span>
         </a>
-        <a href="fees.html">
+        <a href="fees.php">
             <i class="fas fa-regular fa-credit-card"></i>
             <span>Submit Fees</span>
         </a>
     </div>
 
     <div class="navbar">
-        <h2>NB College Admission System</h2>
-        <button type="submit">Logout</button>
+        <div class="logo">
+            <img src="../image/nblogo.png" alt="Logo">
+            <h2>NB College Admission System</h2>
+        </div>
+        <a href="../LogIn/logout.php"><button onclick="return confirm('Are you sure you want to logout?')" type="submit">Logout</button></a>
     </div>
 
     <header class="heading">Admission Application Form</header>
 
     <div class="form-content">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="admission.php" method="post" enctype="multipart/form-data">
             <h3>Admission Form</h3>
+
+            <div class="row-2">
+                <div>
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+            </div>
 
             <div class="row-2">
                 <div>
@@ -50,7 +81,7 @@
                 </div>
                 <div>
                     <label for="studentPhoto">Student Photo [ *File should be in png format ]</label>
-                    <input type="file" id="studentPhoto" name="studentPhoto" value="Choose file" accept=".png" required>
+                    <input type="file" id="studentPhoto" name="studentPhoto" accept=".png" required>
                 </div>
             </div>
 
@@ -85,14 +116,26 @@
                 </div>
             </div>
 
+            <div class="row-2">
+                <div>
+                    <label for="citizenship">Citizenship No.</label>
+                    <input type="text" id="citizenship" name="citizenship" required>
+                </div>
+                <div>
+                    <label for="citizenshipPhoto">Citizenship Photo</label>
+                    <input type="file" id="citizenshipPhoto" name="citizenshipPhoto" accept=".png,.jpg,.jpeg" multiple
+                        required>
+                </div>
+            </div>
+
             <div class="row-1">
                 <div>
                     <label for="tempAddress">Temporary Address</label>
-                    <textarea name="tempAddress" id="tempAddress" cols="133" rows="4"></textarea>
+                    <textarea name="tempAddress" id="tempAddress" cols="128" rows="4"></textarea>
                 </div>
                 <div>
                     <label for="perAddress">Permanent Address</label>
-                    <textarea name="perAddress" id="perAddress" cols="133" rows="4" required></textarea>
+                    <textarea name="perAddress" id="perAddress" cols="128" rows="4" required></textarea>
                 </div>
             </div>
 
@@ -111,17 +154,17 @@
                     <tbody>
                         <tr>
                             <th>10th (Secondary)</th>
-                            <td><input type="text" id="board" name="board" required></td>
-                            <td><input type="text" id="year" name="year" required></td>
-                            <td><input type="text" id="percentage" name="percentage" required></td>
-                            <td><input type="text" id="stream" name="stream" required></td>
+                            <td><input type="text" id="board10" name="board10" required></td>
+                            <td><input type="text" id="year10" name="year10" required></td>
+                            <td><input type="text" id="percentage10" name="percentage10" required></td>
+                            <td><input type="text" id="stream10" name="stream10" required></td>
                         </tr>
                         <tr>
                             <th>12th (Higher Secondary)</th>
-                            <td><input type="text" id="board" name="board" required></td>
-                            <td><input type="text" id="year" name="year" required></td>
-                            <td><input type="text" id="percentage" name="percentage" required></td>
-                            <td><input type="text" id="stream" name="stream" required></td>
+                            <td><input type="text" id="board12" name="board12" required></td>
+                            <td><input type="text" id="year12" name="year12" required></td>
+                            <td><input type="text" id="percentage12" name="percentage12" required></td>
+                            <td><input type="text" id="stream12" name="stream12" required></td>
                         </tr>
                     </tbody>
                 </table>
@@ -156,3 +199,6 @@
 </body>
 
 </html>
+
+<?php }  ?>
+

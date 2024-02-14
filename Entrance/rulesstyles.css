@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+  }
+  
+  body{
+   overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(-45deg, #ffffff91 0%, #bebebe 100%);
+  }
+
+  /* Side Panel */
+  .sidebar{
+    position:fixed;
+    width: 280px;
+    left: 0px;
+    height: 100%;
+    background-color: #0b0d92d2;
+    transition: all .5s ease;
+  }
+  
+  .sidebar header{
+    border-bottom: 5px solid yellow;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #f0f0f0;
+    line-height: 70px;
+    text-align: center;
+    user-select: none;
+  }
+  
+  .sidebar a{
+    display: block;
+    height: 65px;
+    width: 100%;
+    color: #c4c4c4;
+    line-height: 65px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: 5px solid transparent;
+    transition: all .5s ease;
+    font-size: 0.8em;
+  }
+
+  .sidebar a.active,.sidebar a:hover{
+    font-size: 0.9em;
+    border-left: 5px solid white;
+    color: #fff;
+  }
+  .sidebar a i{
+    font-size: 1.2em;
+    margin-right: 16px;
+  }
+  .sidebar a span{
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 78%;
+  left: 280px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 30px;
+  height: 5%;
+}
+
+.logo img {
+  max-height: 50px; 
+  margin: 0%;
+  padding: 0%;
+  width: 50px;
+}
+
+/* Other styles for the navbar */
+
+  .navbar button{
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: #0b0d92d2;
+    border: none;
+    color: white;
+  }
+  .navbar button:hover{
+    background-color: #0b0d929e;
+    cursor: pointer;
+  }
+  .navbar button:active{
+    color: yellow;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 50vh;
+    margin-left: 20%;
+    margin-right: 2%;
+}
+
+.section {
+    flex: 1;
+    width: 100px;
+    height: 140px;
+    margin: 15px;
+    padding: 20px;
+    background-color: #dbe915;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.section h2{
+  padding-top: 50px;
+}

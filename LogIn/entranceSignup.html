@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NB COLLEGE</title>
+    <link rel="stylesheet" href="signup.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+    <div class="index-container">
+        <div class="heading">
+            <h2>ENTRANCE REGISTRATION DETAILS</h2>
+        </div>
+        <form action="entranceSignup.php" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" name="name" id="name" placeholder="Micheal Jackson" required /><br>
+            <label for="number">Mobile Number:</label>
+            <input type="tel" name="number" id="number" placeholder="9808-325-864" required /><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Enter valid email" required /><br>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" placeholder="Your password" required /><br>
+            <div class="g-recaptcha" data-sitekey="6LcaI2kpAAAAAAMVPFzrxJA5Rxnur-HyfB1sxO75"></div>
+            <button type="submit" name="submit">REGISTER</button><br>
+            <div class="edot">
+                <a href="entranceLogin.html" style="color: red">Already have an account? Login</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

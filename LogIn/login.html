@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NB COLLEGE</title>
     <link rel="stylesheet" href="login.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -13,15 +14,16 @@
         <div class="heading">
             <h2>STUDENT LOGIN DETAILS</h2>
         </div>
-        <form action="login.php" method="POST">
+        <form method="POST" action="login.php">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" placeholder="Enter registered email" required /><br>
-            <label for="password">Password: </label>
+            <label for="password">Password:</label>
             <input type="password" name="password" id="password" placeholder="Your password" required /><br>
+            <div class="g-recaptcha" data-sitekey="6LcaI2kpAAAAAAMVPFzrxJA5Rxnur-HyfB1sxO75"></div>
             <button type="submit" name="login">LOG IN</button><br>
-            <div class="edot">
-                <a href="signup.html" style="color: red">Don't have an account ? Create here</a>
-            </div>
+            <!-- <div class="edot">
+                <a href="signup.html" style="color: red">Don't have an account? Create here</a>
+            </div> -->
         </form>
     </div>
 </body>

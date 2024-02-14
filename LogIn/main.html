@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NB COLLEGE</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- <div id="video-container">
+        <video id="intro-video" autoplay muted>
+            <source src="images/logo.mp4" type="video/mp4">
+        </video>
+    </div> -->
+    <div class="container">
+        <div id="home" class="navbar">
+            <div class="logo">
+                <img src="../image/nbwhite.png" alt="Logo">
+                <h2>NB College</h2>
+            </div>
+            <div class="nav-content">
+                <a href="#home">Home</a>
+                <a href="#about-us">About Us</a>
+                <a href="#contact-us">Contact</a>
+                <div class="dropdown">
+                    <a href="#">LogIn <i class="fas fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="adminlogin.html">Admin</a>
+                        <a href="entranceLogin.html">Entrance</a>
+                        <a href="login.html">Admission</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="hero-section">
+                <h1 class="heading">Welcome to <span>NB COLLEGE</span></h1>
+                <p>"To those of you who received honors, awards and distinctions, I say well done. And to the C
+                    students, I say you too may one day be president of the United States."<br>– George W. Bush</p>
+                <a href="#about-us"><button>Learn More</button></a>
+            </div>
+            <div class="form-display">
+                <h3>APPLY NOW !</h3>
+                <form action="" method="post">
+                    <select name="course" id="course">
+                        <option value="default" selected disabled>Select Faculty</option>
+                        <option value="csit">BSc. CSIT</option>
+                        <option value="bca">BCA</option>
+                    </select>
+                    <input type="text" id="name" name="name" placeholder="Name"><br>
+                    <input type="email" id="email" name="email" placeholder="Email"><br>
+                    <input type="tel" id="phone" name="phone" placeholder="Phone"><br>
+                    <!-- <input type="date" id="dob" name="dob"><br> -->
+                    <input type="text" id="address" name="address" placeholder="Address"><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-us" class="about-us">
+        <div class="about-left">
+            <h3>ABOUT US</h3>
+            <img src="images/pexels-edmond-dantès-4342401.jpg" alt="">
+            <h5>Mr. Nick Brask <br>Founder</h5>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur vitae hic minima harum corporis at
+                nulla optio praesentium dolor voluptates reprehenderit maxime, laudantium odit. Ipsam libero earum optio
+                amet quis.</p>
+        </div>
+        <div class="about-right">
+            <h1>BEHIND THE SUCCESS</h1>
+            <p>Behind the success of our college lies a combination of dedicated leadership, passionate faculty, and a
+                commitment to fostering an environment of excellence. The college's success can be attributed to
+                visionary leadership that has set clear goals and strategies, ensuring a strong foundation for academic
+                and organizational growth. The administration's focus on creating a student-centric learning experience
+                has played a pivotal role in attracting and retaining talented educators who are not only experts in
+                their fields but also deeply committed to nurturing the intellectual and personal development of our
+                students.</p>
+
+            <div class="flex-row about-boxes">
+                <div class="about-box">1000+ <br>Graduates</div>
+                <div class="about-box">200+ <br> Staffs</div>
+                <div class="about-box">2 <br>Faculties</div>
+            </div>
+
+            <a href="images/pexels-emily-ranquist-1205651.jpg" target="_blank">
+                <img src="images/pexels-emily-ranquist-1205651.jpg" alt="">
+            </a>
+            <a href="images/pexels-ivan-samkov-5676744.jpg" target="_blank"><img
+                    src="images/pexels-ivan-samkov-5676744.jpg" alt="">
+            </a>
+            <a href="images/pexels-andrea-piacquadio-3807755.jpg" target="_blank"> <img
+                    src="images/pexels-andrea-piacquadio-3807755.jpg" alt="">
+            </a>
+        </div>
+    </div>
+
+    <div class="contact-us">
+        <div id="contact-us" class="banner">
+            <h1>Get in Touch With Us</h1>
+            <p>we are here to answer your questions !</p>
+        </div>
+        <div class="contact-form">
+            <div class="form-container">
+                <h2>Your Details</h2>
+                <form action="cont.php" method="POST">
+
+                    <label for="Name">Name</label>
+                    <input type="text" id="Name" name="Name" required>
+
+                    <label for="Email">Email</label>
+                    <input type="text" id="Email" name="Email" required>
+
+                    <label for="Message">Message</label>
+                    <textarea id="text" name="Message" rows="4" required></textarea>
+
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <h4>NB COLLEGE &copy; 2023, All Rights Reserved.</h4>
+        <p>Design - Nikil Maharjan & Bishesh Ganesh Shrestha</p>
+    </footer>
+</body>
+
+</html>

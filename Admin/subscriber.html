@@ -12,7 +12,7 @@
 
 <body>
     <div class="sidebar">
-        <header>Hello, Admin</header>
+        <header>Admin</header>
         <a href="dashboard.html">
             <i class="fas fa-qrcode"></i>
             <span>Dashboard</span>
@@ -30,7 +30,7 @@
             <span>Admission application</span>
         </a>
         <a href="searchApp.html">
-            <i class="fas fa-solid fa-magnifying-glass"></i>
+            <i class="fas fa-search"></i>
             <span>Search Application</span>
         </a>
         <a href="subscriber.html" class="active">
@@ -44,8 +44,12 @@
     </div>
 
     <div class="navbar">
-        <h2>NB College Admission System</h2>
-        <button type="submit">Logout</button>
+        <div class="logo">
+            <img src="../image/nblogo.png" alt="Logo">
+            <h2>NB College Admission System</h2>
+        </div>
+        <a href="../LogIn/logout.php"><button onclick="return confirm('Are you sure you want to logout?')"
+                type="submit">Logout</button></a>
     </div>
 
 </body>

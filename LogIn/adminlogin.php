@@ -1,5 +1,6 @@
-
 <?php
+  $con = mysqli_connect("localhost", "root", "", "nbcollege");
+
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check username and password (replace this with database authentication)
     $email = $_POST["email"];
@@ -12,10 +13,10 @@
     if ($email == $validemail && $password == $validPassword) {
       //session_start();
      // $_SESSION["email"] = $email;
-      header("Location:dashboard.php");
+      header("Location:../Admin/dashboard.html");
       exit();
     } else {
-      echo "<p>Invalid username or password.</p>";
+      echo "<script>alert('Invalid Details');</script>";
     }
   }
   ?>

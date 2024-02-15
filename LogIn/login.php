@@ -34,7 +34,7 @@ if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
 
     // Verify the entered password
-    if ($enteredpassword == $user['password']) {
+    if (password_verify($enteredpassword, $user['password'])) {
         // Fetch total marks from the "user" table
         $fetchTotalMarksSql = "SELECT total_marks FROM user_results WHERE email = '$enteredemail' LIMIT 1";
         $result = $conn->query($fetchTotalMarksSql);
@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
             // Check if the user has scored 5 or more marks
             if ($totalMarks >= 5) {
                 // Redirect to dashboard.php
-                header("Location:..student/dashboard.php?email=$enteredemail&&total_marks=$totalMarks");
+                header("Location:entranceLogin.html?email=$enteredemail&&total_marks=$totalMarks");
                 exit();
             } else {
                 // Display an error message or redirect to login.php with an error parameter

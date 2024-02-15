@@ -70,23 +70,23 @@
                 
                 // Check if it's a success or failure message and apply corresponding CSS class
                 if (strpos($message, 'Congratulations') !== false) {
-                    echo "<img class='celebration' src='clzlogo.png' alt='Congratulations'>";
+                    echo "<img class='celebration' src='../image/nblogo.png' alt='Congratulations'>";
                     echo "<p class='success-score'>$message</p>";
                     echo "<h3 >WHAT TO DO NEXT?</h3>";
                     echo "<p class='success-message'>1. Proceed to Student Admission Portal</p>";
                     echo "<p class='success-message'>2. Login using your registered Email and Password</p>";
                     echo "<p class='success-message'>3. Fill Up the Admission Form.</p>";
-                    echo "<button class='proceed-button' onclick=\"window.location.href='dashboard.htm'\">Proceed to Dashboard</button>";
+                    echo "<button class='proceed-button' onclick=\"window.location.href='rules.php'\">Proceed to Dashboard</button>";
                    
                    
                 } else {
-                    echo "<img class='celebration' src='logo.png' alt='Congratulations'>";
+                    echo "<img class='celebration' src='../image/nblogo.png' alt='Congratulations'>";
                     echo "<p class='failure-score'>$message</p>";
                     echo "<h3 >WHAT TO DO NEXT?</h3>";
                     echo "<p class='failure-message'>1. Visit college for further discussion.</p>";
                     echo "<p class='failure-message'>2. Bring any identity card for verification.</p>";
                     echo "<p class='failure-message'>3. Sorry Try next time.</p>";
-                    echo "<button class='proceed-button' onclick=\"window.location.href='dashboard.htm'\">Proceed to Dashboard</button>";
+                    echo "<button class='proceed-button' onclick=\"window.location.href='rules.php'\">Proceed to Dashboard</button>";
 
                 }
             } else {
@@ -95,6 +95,6 @@
             }
         ?>
     </div>
-        <p>wow</p>
+      
 </body>
 </html>

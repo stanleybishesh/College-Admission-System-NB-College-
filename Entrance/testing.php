@@ -8,10 +8,58 @@ $dbname = "nbcollege";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Initialize questions array
+$questions = array();
+
+// Check if the form is submitted
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
+    // Initialize total marks and an array to store user responses
+    $totalMarks = 0;
+    $userResponses = array();
+
+    // Loop through the submitted answers, calculate total marks, and store user responses
+    foreach ($_POST['answers'] as $questionId => $selectedOption) {
+        // Retrieve correct answer from the database (assuming you have a 'correct_answer' column)
+        $sql = "SELECT correct_answer FROM test_questions WHERE ID = $questionId";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $correctAnswer = $row['correct_answer'];
+
+            // Check if the selected option is correct
+            $isCorrect = ($selectedOption == $correctAnswer);
+
+            // Update total marks
+            if ($isCorrect) {
+                $totalMarks++;
+            }
+        }
+    }
+    
+    // Save user responses and total marks into the database (assuming you have a 'user_results' table)
+    $username = $_POST['username'];// Replace with the actual username or user identifier
+$email=$_POST['email'];
+    // Serialize user responses array to store in the database
+    $serializedResponses = json_encode($_POST['answers']);
+
+    $insertSql = "INSERT INTO user_results (username, total_marks, user_responses, email) VALUES ('$username', $totalMarks, '$serializedResponses','$email')";
+
+    if ($conn->query($insertSql) === TRUE) {
+        // Check if the user passed or not
+        if ($totalMarks >= 4) {
+            header("Location: result_message.php?message=Congratulations! $username, You passed with total marks obtained = $totalMarks /10. You can now apply for admission.");
+        } else {
+            header("Location: result_message.php?message=Sorry $username, you didn't meet the required criteria for admission. you failed with total marks obtained = $totalMarks/10");
+
+        }           
+    } else {
+        echo "Error saving results: " . $conn->error;
+    }
 }
+ // Stop further execution to prevent displaying the questions again after submission
+
 
 // SQL query to fetch all questions
 $sql = "SELECT * FROM test_questions";
@@ -27,7 +75,7 @@ if ($result->num_rows > 0) {
     $questions = array("No questions found.");
 }
 
-// Close the connection
+// Close the connection (if not closed already)
 $conn->close();
 ?>
 <?php
@@ -112,7 +160,11 @@ if (strlen($_SESSION['uid']==0)) {
 <div class="questions">
     <h1>Take the Test</h1>
      <div style="color:red">TIME REMAINING:</div><div id="timer">100s</div>
-    <form>
+     <form method="post">
+         <label for="email">email:</label>
+        <input type="email" name="email" id="email">
+        <label for="username">username:</label>
+        <input type="text" name="username" id="username">
 <?php
 // Display questions
 foreach ($questions as $question) {

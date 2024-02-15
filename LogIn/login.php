@@ -9,7 +9,7 @@ $enteredpassword = $_POST['password'];
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "try";
+$dbname = "nbcollege";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 }
 if ($verify_data->success) {
 // Fetch user from the "info" table
-$fetchUserSql = "SELECT * FROM info WHERE email = '$enteredemail' LIMIT 1";
+$fetchUserSql = "SELECT * FROM users WHERE email = '$enteredemail' LIMIT 1";
 
 $result = $conn->query($fetchUserSql);
 
@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
             // Check if the user has scored 5 or more marks
             if ($totalMarks >= 5) {
                 // Redirect to dashboard.php
-                header("Location:..student/dashboard.php?username=$enteredemail&&total_marks=$totalMarks");
+                header("Location:..student/dashboard.php?email=$enteredemail&&total_marks=$totalMarks");
                 exit();
             } else {
                 // Display an error message or redirect to login.php with an error parameter
@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
     }
 } else{
     // Display an error message or redirect to login.php with an error parameter
-    echo "Invalid username. Please try again.";
+    echo "Invalid email. Please try again.";
 }
 }else{
     // CAPTCHA verification failed, handle accordingly

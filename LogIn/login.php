@@ -1,6 +1,11 @@
 <?php
 session_start();
 error_reporting(0);
+include 'db.php';
+if (strlen($_SESSION['uid']==0)) {
+  header('location:logout.php');
+  } else{
+
 // Simulate the login process
 $enteredemail = $_POST['email'];
 $enteredpassword = $_POST['password'];
@@ -45,7 +50,7 @@ if ($result->num_rows > 0) {
 
             // Check if the user has scored 5 or more marks
             if ($totalMarks >= 5) {
-                // Redirect to dashboard.php
+                
                 header("Location:entranceLogin.html?email=$enteredemail&&total_marks=$totalMarks");
                 exit();
             } else {
@@ -70,4 +75,5 @@ if ($result->num_rows > 0) {
 
 // Close the connection
 $conn->close();
+  }
 ?>

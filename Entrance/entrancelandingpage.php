@@ -6,7 +6,18 @@ if (strlen($_SESSION['uid']==0)) {
   header('location:../LogIn/logout.php');
   } else{
 
-  ?>
+    $uid = $_SESSION['uid'];
+
+    // Check if the user has already submitted the test
+    $checkTestSubmission = mysqli_query($con, "SELECT * FROM user_results WHERE ID = '$uid'");
+    
+    if (mysqli_num_rows($checkTestSubmission) > 0) {
+        // User has already submitted the test
+        echo "<script>alert('You have already given the entrance test.');</script>";
+        echo "<script>window.location.href='rules.php';</script>";
+    } else {
+        // User has not submitted the test, display the entrance exam page
+        ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +33,6 @@ if (strlen($_SESSION['uid']==0)) {
 
 <body>
     <?php
-        $uid=$_SESSION['uid'];
         $ret=mysqli_query($con,"SELECT fullname FROM users WHERE ID='$uid'");
         $row=mysqli_fetch_array($ret);
         $fullname=$row['fullname'];
@@ -96,5 +106,8 @@ if (strlen($_SESSION['uid']==0)) {
 
 
 </html>
+    
 
-<?php }  ?>
+<?php }
+  }
+?>

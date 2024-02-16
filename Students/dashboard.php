@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 include '../LogIn/db.php';
 if (strlen($_SESSION['uid']==0)) {
-  header('location:../LogIn/logout.php');
+    header('location:../LogIn/logout.php');
   } else{
 
   ?>

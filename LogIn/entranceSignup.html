@@ -18,7 +18,8 @@
             <label for="fullname">Full Name:</label>
             <input type="text" name="fullname" id="fullname" placeholder="Micheal Jackson" required /><br>
             <label for="number">Mobile Number:</label>
-            <input type="tel" name="number" id="number" placeholder="9808-325-864" required /><br>
+            <input type="tel" name="number" id="number" pattern="[0-9]{10}" title="Please enter a 10-digit phone number"
+                placeholder="9800112233" required /><br>
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" placeholder="Enter valid email" required /><br>
             <label for="password">Password: </label>

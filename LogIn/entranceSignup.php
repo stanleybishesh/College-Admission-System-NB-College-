@@ -29,7 +29,7 @@
             $query=mysqli_query($con, "INSERT INTO users (fullname,number,email,password) VALUE('$fullname','$number','$email','$password')");
                 if ($query) {
                 echo "<script>alert('You have successfully registered');</script>";
-                echo "<script>window.location.href ='entranceLogin.html'</script>";
+                
                 }else{
                 echo "<script>alert('Something Went Wrong. Please try again');</script>";
                 echo "<script>window.location.href ='entranceSignup.html'</script>";

@@ -30,10 +30,12 @@ if ($verify_data->success) {
             header('location: ../Entrance/rules.php');
         }   else {
             echo "<script>alert('Invalid Details');</script>";
+            echo "<script>window.location.href='entranceLogin.html';</script>";
         }
     }
 }else{
         // CAPTCHA verification failed, handle accordingly
         echo  "<script>alert('Captcha verification failed');</script>";
+        echo "<script>window.location.href='entranceLogin.html';</script>";
     }
 ?>

@@ -86,8 +86,9 @@
                     echo "<p class='failure-message'>1. Visit college for further discussion.</p>";
                     echo "<p class='failure-message'>2. Bring any identity card for verification.</p>";
                     echo "<p class='failure-message'>3. Sorry Try next time.</p>";
-                    echo "<button class='proceed-button' onclick=\"window.location.href='rules.php'\">Proceed to Dashboard</button>";
-
+                    ?>
+                    <button class="proceed-button" href="rules.php">Proceed to Dashboard</button>";
+                    <?php
                 }
             } else {
                 echo "<p>Invalid request</p>";

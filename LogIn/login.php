@@ -50,31 +50,31 @@
                         exit();
                     } else {
                         // Display an error message or redirect to login.php with an error parameter
-                        echo "<script>alert('Sorry! You didn't score enough marks for admission in this college.');</script>";
+                        echo "<script>alert(\"Sorry! You didn't score enough marks for admission in this college.\");</script>";
                         echo "<script>window.location.href='main.html';</script>";
                         exit(); // Important to exit after header
                     }
                 } else {
                     echo "<script>alert('No result found for this user !!!');</script>";
-                    echo "<script>window.location.href='main.html';</script>";
+                    echo "<script>window.location.href='login.html';</script>";
                     exit(); // Important to exit after header
                 }
             } else {
                 // Display an error message or redirect to login.php with an error parameter
                 echo "<script>alert('Invalid Password! Please try again.');</script>";
-                echo "<script>window.location.href='main.html';</script>";
+                echo "<script>window.location.href='login.html';</script>";
                 exit(); // Important to exit after header
             }
         } else {
             // Display an error message or redirect to login.php with an error parameter
             echo "<script>alert('Invalid Email! Please try again.');</script>";
-            echo "<script>window.location.href='main.html';</script>";
+            echo "<script>window.location.href='login.html';</script>";
             exit(); // Important to exit after header
         }
     } else {
         // CAPTCHA verification failed, handle accordingly
         echo "<script>alert('Captcha verification failed');</script>";
-        echo "<script>window.location.href='main.html';</script>";
+        echo "<script>window.location.href='login.html';</script>";
         exit(); // Important to exit after header
     }
 

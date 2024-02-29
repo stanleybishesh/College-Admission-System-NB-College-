@@ -20,7 +20,7 @@ if ($verify_data->success) {
         $enteredPassword = $_POST['password'];
 
         // Fetch the hashed password from the database based on the entered email or number
-        $query = mysqli_query($con, "SELECT ID, password FROM users WHERE (email='$email' OR number='$email')");
+        $query = mysqli_query($con, "SELECT ID,email, password FROM users WHERE (email='$email' OR number='$email')");
         $result = mysqli_fetch_assoc($query);
 
         if ($result && password_verify($enteredPassword, $result['password'])) {

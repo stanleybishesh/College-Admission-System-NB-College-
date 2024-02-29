@@ -7,10 +7,10 @@ if (strlen($_SESSION['uid'])==0) {
   } else{
 
     $uid = $_SESSION['uid'];
-    $email = $_SESSION['uid'];
+    $email = $_SESSION['email'];
 
     // Check if the user has already submitted the test
-    $checkTestSubmission = mysqli_query($con, "SELECT * FROM user_results WHERE ID = '$uid' && email = '$email'");
+    $checkTestSubmission = mysqli_query($con, "SELECT * FROM user_results WHERE /*ID = '$uid' ||*/ email = '$email'");
     
     if (mysqli_num_rows($checkTestSubmission) > 0) {
         // User has already submitted the test

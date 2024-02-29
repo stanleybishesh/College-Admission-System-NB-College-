@@ -158,27 +158,39 @@ if (strlen($_SESSION['uid']==0)) {
     </div>
   
 <div class="questions">
-    <h1>Take the Test</h1>
-     <div style="color:red">TIME REMAINING:</div><div id="timer">100s</div>
+    <h1 style="border-bottom: 1px solid #d4d4d4;padding-bottom: 5px;">Take the Test</h1>
+    <div class="timer" style="display: flex; gap: 10px; align-items: center;">
+     <div style="color: #ff6a6a; margin: 10px 0;font-size: 16px;font-weight: 600;">TIME REMAINING:</div><span id="timer" style="font-size: 19px; font-weight: 700; color: #17a717;">100s</span>
+    </div>
      <form method="post">
-         <label for="email">email:</label>
-        <input type="email" name="email" id="email">
-        <label for="username">username:</label>
-        <input type="text" name="username" id="username">
-<?php
-// Display questions
-foreach ($questions as $question) {
-    echo "<p>Question: " . $question['question'] . "</p>";
-    
-    // Display options as radio buttons
-    echo "<label><input type='radio' name='answers[".$question['ID']."]' value='1'>" . $question['option1'] . "</label><br>";
-    echo "<label><input type='radio' name='answers[".$question['ID']."]' value='2'>" . $question['option2'] . "</label><br>";
-    echo "<label><input type='radio' name='answers[".$question['ID']."]' value='3'>" . $question['option3'] . "</label><br>";
-    echo "<label><input type='radio' name='answers[".$question['ID']."]' value='4'>" . $question['option4'] . "</label><br>";
-    
-    echo "<hr>";
-}
-?>
+        <div class="auth-form">
+            <div class="email-wrapper">
+                <label for="email">Email:</label>
+               <input type="email" name="email" id="email">
+            </div>
+
+           <div class="email-wrapper">
+               <label for="username">Username:</label>
+               <input type="text" name="username" id="username">
+            </div>
+        </div>
+        <div class="questions-wrapper">
+            <?php
+            // Display questions
+            foreach ($questions as $question) {
+                echo "<p classname='question' style=' color: #af1515;'>Question: " . $question['question'] . "</p>";
+                
+                // Display options as radio buttons
+                echo "<label><input type='radio' name='answers[".$question['ID']."]' value='1'>" . $question['option1'] . "</label><br>";
+                echo "<label><input type='radio' name='answers[".$question['ID']."]' value='2'>" . $question['option2'] . "</label><br>";
+                echo "<label><input type='radio' name='answers[".$question['ID']."]' value='3'>" . $question['option3'] . "</label><br>";
+                echo "<label><input type='radio' name='answers[".$question['ID']."]' value='4'>" . $question['option4'] . "</label><br>";
+
+                
+                echo "<hr class='question-hr'>";
+            }
+            ?>
+        </div>
 
 <button id="submitBtn" type="submit">Submit Answers</button>
 

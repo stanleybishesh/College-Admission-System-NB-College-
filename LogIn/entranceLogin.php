@@ -25,6 +25,7 @@ if ($verify_data->success) {
 
         if ($result && password_verify($enteredPassword, $result['password'])) {
             $_SESSION['uid'] = $result['ID'];
+            $_SESSION['email'] = $result['email'];
             //echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
             header('location: ../Entrance/rules.php');
         }   else {

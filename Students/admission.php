@@ -46,14 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $studentPhotoPath = $studentUpload . $studentPhoto;
     move_uploaded_file($_FILES["studentPhoto"]["tmp_name"], $studentPhotoPath);
 
-    // Handle multiple file uploads for citizenship photo
-    $citizenshipPhotos = $_FILES["citizenshipPhoto"];
-    foreach ($citizenshipPhotos["tmp_name"] as $key => $tmp_name) {
-        $citizenshipPhoto = basename($citizenshipPhotos["name"][$key]);
-        $citizenshipPhotoPath = $citizenshipUpload . $citizenshipPhoto;
-        move_uploaded_file($tmp_name, $citizenshipPhotoPath);
-        // Now $citizenshipPhotoPath contains the path of each uploaded file
-    }
+    $citizenshipPhoto = $_FILES["citizenshipPhoto"]["name"];
+    $citizenshipPhotoPath = $citizenshipUpload . $citizenshipPhoto;
+    move_uploaded_file($_FILES["citizenshipPhoto"]["tmp_name"], $citizenshipPhotoPath);
 
     $marksheet10 = $_FILES["marksheet10"]["name"];
     $marksheet10Path = $marksheet10Upload . $marksheet10;

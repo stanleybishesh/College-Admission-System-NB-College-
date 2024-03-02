@@ -134,8 +134,7 @@ if (strlen($_SESSION['result_id']==0)) {
                 </div>
                 <div>
                     <label for="citizenshipPhoto">Citizenship Photo</label>
-                    <input type="file" id="citizenshipPhoto" name="citizenshipPhoto[]" accept=".png,.jpg,.jpeg" multiple
-                        required>
+                    <input type="file" id="citizenshipPhoto" name="citizenshipPhoto" accept=".png,.jpg,.jpeg" required>
                 </div>
             </div>
 

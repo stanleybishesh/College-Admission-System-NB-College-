@@ -13,7 +13,7 @@
     if ($email == $validemail && $password == $validPassword) {
       //session_start();
      // $_SESSION["email"] = $email;
-      header("Location:../Admin/dashboard.html");
+      header("Location:../Admin/dashboard.php");
       exit();
     } else {
       echo "<script>alert('Invalid Details');</script>";

@@ -1,0 +1,37 @@
+/* Styling for the application status container */
+.application-status {
+    position: absolute;
+    left: 320px;
+    top: 100px;
+    width: 1100px;
+}
+
+/* Styling for the table */
+table {
+    width: 100%;    
+    /* border-collapse: collapse; */
+    margin-top: 20px;
+}
+
+/* Styling for table header */
+th {
+    background-color:rgba(89, 89, 242, 0.871);
+    padding: 10px;
+    text-align: left;
+}
+
+/* Styling for table cells */
+td {
+    background-color:rgba(152, 152, 152, 0.66);
+    padding: 10px;
+}
+
+/* Styling for edit and view links */
+.application-status a{
+    text-decoration: none;
+    color: #001284;
+}
+
+.application-status a:hover {
+    text-decoration: underline;
+}

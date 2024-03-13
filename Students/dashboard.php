@@ -2,10 +2,12 @@
 session_start();
 error_reporting(0);
 include '../LogIn/db.php';
-if (strlen($_SESSION['uid']==0)) {
+// echo $_SESSION['result_id'];
+if (strlen($_SESSION['result_id']==0)) {
     header('location:../LogIn/logout.php');
   } else{
-
+    $result_id=$_SESSION['result_id'];
+    $applicationData = mysqli_query($con, "SELECT * FROM admission_users WHERE user_results_id='$result_id'");
   ?>
 
 <!DOCTYPE html>
@@ -18,6 +20,7 @@ if (strlen($_SESSION['uid']==0)) {
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
@@ -51,6 +54,35 @@ if (strlen($_SESSION['uid']==0)) {
             <h2>NB College Admission System</h2>
         </div>
         <a href="../LogIn/logout.php"><button onclick="return confirm('Are you sure you want to logout?')" type="submit">Logout</button></a>
+    </div>
+
+    <div class="application-status">
+        <h2>Application Status</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Applied Date</th>
+                    <th>Course</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>View</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    // Display fetched data in the table rows
+                    while ($applicationRow = mysqli_fetch_assoc($applicationData)) {
+                        echo "<tr>";
+                        echo "<td>" . $applicationRow['submission_date'] . "</td>";
+                        echo "<td>" . $applicationRow['course'] . "</td>";
+                        echo "<td>Pending</td>";
+                        echo "<td><a href='editAdmissionForm.php'>Edit</a></td>";
+                        echo "<td><a href='displayAdmissionForm.php'>View</a></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+            </tbody>
+        </table>
     </div>
 
 </body>

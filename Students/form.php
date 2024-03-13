@@ -2,11 +2,21 @@
 session_start();
 error_reporting(0);
 include '../LogIn/db.php';
-if (strlen($_SESSION['uid']==0)) {
+// echo "Session ID: " .$_SESSION['result_id'];
+if (strlen($_SESSION['result_id']==0)) {
   header('location:../LogIn/logout.php');
   } else{
-
-  ?>
+    $result_id = $_SESSION['result_id'];
+    // Check if the user has already submitted the test
+    $checkAdmission = mysqli_query($con, "SELECT * FROM admission_users WHERE user_results_id = '$result_id'");
+    
+    if (mysqli_num_rows($checkAdmission) > 0) {
+        // User has already submitted the test
+        echo "<script>alert('You have already filled up admission form.');</script>";
+        echo "<script>window.location.href='dashboard.php';</script>";
+    } else {
+        // User has not submitted the test, display the entrance exam page
+        ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +29,7 @@ if (strlen($_SESSION['uid']==0)) {
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="form.css">
+    <script src="admission.js"></script>
 </head>
 
 <body>
@@ -56,7 +67,7 @@ if (strlen($_SESSION['uid']==0)) {
     <header class="heading">Admission Application Form</header>
 
     <div class="form-content">
-        <form action="admission.php" method="post" enctype="multipart/form-data">
+        <form action="admission.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
             <h3>Admission Form</h3>
 
             <div class="row-2">
@@ -74,7 +85,7 @@ if (strlen($_SESSION['uid']==0)) {
                 <div>
                     <label for="course">Course Applied</label>
                     <select name="course" id="course" required>
-                        <option value="default" selected>Default</option>
+                        <option value="default" disabled selected>Default</option>
                         <option value="bsccsit">Bsc CSIT</option>
                         <option value="bca">BCA</option>
                     </select>
@@ -123,8 +134,7 @@ if (strlen($_SESSION['uid']==0)) {
                 </div>
                 <div>
                     <label for="citizenshipPhoto">Citizenship Photo</label>
-                    <input type="file" id="citizenshipPhoto" name="citizenshipPhoto" accept=".png,.jpg,.jpeg" multiple
-                        required>
+                    <input type="file" id="citizenshipPhoto" name="citizenshipPhoto" accept=".png,.jpg,.jpeg" required>
                 </div>
             </div>
 
@@ -200,5 +210,6 @@ if (strlen($_SESSION['uid']==0)) {
 
 </html>
 
-<?php }  ?>
-
+<?php }  
+  }
+?>

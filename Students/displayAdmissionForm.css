@@ -1,0 +1,110 @@
+.displayForm {
+    position: absolute;
+    top: 100px;
+    left: 350px;
+    width: 1000px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    font-size: 2.2em;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.profile-header h2 {
+    color: #333;
+}
+
+.profile-header img {
+    max-width: 150px;
+    max-height: 150px;
+    /* border-radius: 50%; */
+    margin-top: 10px;
+}
+
+.profile-data {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-data h3 {
+    text-decoration: underline;
+    color: #333;
+}
+
+.profile-data table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0px;
+}
+
+.profile-data th, .profile-data td {
+    width: 20%;
+    border: 1px solid grey;
+    padding: 10px;
+    text-align: left;
+}
+
+.profile-data p {
+    margin: 10px 0;
+}
+
+.profile-data a{
+    color: rgb(1, 1, 144);
+}
+.profile-data a:hover{
+    color: red;
+}
+
+.buttons{
+    position: absolute;
+    left: 800px;
+    top:980px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #0b0d92d2;
+    border: none;
+    color: white;
+  }
+  
+  .buttons button:hover{
+    background-color: #0b0d929e;
+    cursor: pointer;
+  }
+  .buttons button:active{
+    color: yellow;
+  }
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    /* .buttons{
+        display: none;
+    } */
+
+    .displayForm, .displayForm * {
+        visibility: visible;
+    }
+
+    .displayForm {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+@page {
+    margin: 0;
+}
+

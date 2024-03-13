@@ -36,16 +36,17 @@
 
             if (password_verify($enteredpassword, $user['password'])) {
                 // Fetch total marks from the "user_results" table
-                $fetchTotalMarksSql = "SELECT total_marks FROM user_results WHERE email = '$enteredemail' LIMIT 1";
+                $fetchTotalMarksSql = "SELECT ID,total_marks FROM user_results WHERE email = '$enteredemail' LIMIT 1";
                 $marksResult = $conn->query($fetchTotalMarksSql);
 
                 if ($marksResult->num_rows > 0) {
                     $_SESSION['uid'] = $user['ID'];
                     $row = $marksResult->fetch_assoc();
+                    $_SESSION['result_id'] = $row['ID'];
                     $totalMarks = $row['total_marks'];
 
-                    // Check if the user has scored 5 or more marks
-                    if ($totalMarks >= 5) {
+                    // Check if the user has scored 4 or more marks
+                    if ($totalMarks >= 4) {
                         header("Location: ../Students/dashboard.php?email=$enteredemail&total_marks=$totalMarks");
                         exit();
                     } else {

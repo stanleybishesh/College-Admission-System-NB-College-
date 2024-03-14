@@ -108,3 +108,39 @@
     margin: 0;
 }
 
+
+/*selectOrReject.php*/
+form input{
+    padding: 10px;
+    width: 95%;
+}
+textarea{
+    padding: 10px;
+}
+select{
+    width: 100%;
+    padding: 5px 10px;
+}
+form #reject,form #select{
+    margin-left: 100px;
+    margin-right: 10px;
+}
+#form th,#form td{
+    width: 50%;
+}
+#button{
+    width: 100px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: #0b0d92d2;
+    border: none;
+    color: white;
+}
+#button:hover{
+    background-color: #0b0d929e;
+    cursor: pointer;
+}
+#button:active{
+    color: yellow;
+}
+

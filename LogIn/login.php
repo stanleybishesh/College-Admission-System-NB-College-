@@ -68,8 +68,8 @@
             }
         } else {
             // Display an error message or redirect to login.php with an error parameter
-            echo "<script>alert('Invalid Email! Please try again.');</script>";
-            echo "<script>window.location.href='login.html';</script>";
+            echo "<script>alert('Please register for Entrance exam !');</script>";
+            echo "<script>window.location.href='entranceSignup.html';</script>";
             exit(); // Important to exit after header
         }
     } else {

@@ -64,15 +64,15 @@ $conn->close();
             <i class="fas fa-qrcode"></i>
             <span>Dashboard</span>
         </a>
-        <a href="course.html">
+        <a href="course.php">
             <i class="fas fa-solid fa-graduation-cap"></i>
             <span>Course</span>
         </a>
-        <a href="regUsers.html">
+        <a href="regUsers.php">
             <i class="fas fa-solid fa-users"></i>
             <span>Registered Users</span>
         </a>
-        <a href="application.html">
+        <a href="application.php">
             <i class="fas fa-solid fa-folder-open"></i>
             <span>Admission application</span>
         </a>
@@ -84,7 +84,7 @@ $conn->close();
             <i class="fas fa-solid fa-user-tag"></i>
             <span>Merit List</span>
         </a>
-        <a href="reports.html">
+        <a href="reports.php">
             <i class="fas fa-solid fa-envelope"></i>
             <span>Reports</span>
         </a>

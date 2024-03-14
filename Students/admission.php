@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     move_uploaded_file($_FILES["marksheet12"]["tmp_name"], $marksheet12Path);
 
     // SQL query to insert data into the database
-    $sql = "INSERT INTO admission_users (user_results_id, first_name, last_name, course, student_photo, father_name, mother_name, dob, nationality, gender, citizenship, citizenship_photo, temp_address, per_address, board10, year10, percentage10, stream10, board12, year12, percentage12, stream12, marksheet10, marksheet12, declaration) VALUES ('{$_SESSION['result_id']}', '$firstName','$lastName', '$course', '$studentPhoto', '$fatherName', '$motherName', '$dob', '$nationality', '$gender', '$citizenship', '$citizenshipPhoto', '$tempAddress', '$perAddress', '$board10', '$year10', '$percentage10', '$stream10', '$board12', '$year12', '$percentage12', '$stream12', '$marksheet10', '$marksheet12', '$declaration')";
+    $sql = "INSERT INTO admission_users (user_id, user_results_id, first_name, last_name, course, student_photo, father_name, mother_name, dob, nationality, gender, citizenship, citizenship_photo, temp_address, per_address, board10, year10, percentage10, stream10, board12, year12, percentage12, stream12, marksheet10, marksheet12, declaration) VALUES ('{$_SESSION['uid']}', '{$_SESSION['result_id']}', '$firstName','$lastName', '$course', '$studentPhoto', '$fatherName', '$motherName', '$dob', '$nationality', '$gender', '$citizenship', '$citizenshipPhoto', '$tempAddress', '$perAddress', '$board10', '$year10', '$percentage10', '$stream10', '$board12', '$year12', '$percentage12', '$stream12', '$marksheet10', '$marksheet12', '$declaration')";
 
     // Perform the query
     if ($conn->query($sql) === TRUE) {

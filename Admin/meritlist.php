@@ -84,7 +84,7 @@ $conn->close();
             <i class="fas fa-solid fa-user-tag"></i>
             <span>Merit List</span>
         </a>
-        <a href="reports.html">
+        <a href="reports.php">
             <i class="fas fa-solid fa-envelope"></i>
             <span>Reports</span>
         </a>

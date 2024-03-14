@@ -9,29 +9,45 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
 <style>
-    .flex-container {
+.flex-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
-  margin-left: 20%;
-  margin-right: 2%;
+  height: 43vh;
+  margin-left: 19%;
+  margin-right: 1%;
 }
 
 .section {
   flex: 1;
   width: 100px;
-  height: 140px;
+  height: 100px;
   margin: 15px;
   padding: 20px;
-  background-color: #e4c142;
+  background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 .section h2 {
-  padding-top: 30px;
-  color:darkgreen;
+  padding-top: 10px;
+  color:#535050;
+  text-align: left;
+  padding-left:10px;
+}
+.section h1 {
+  color:#0b0d92d2;
+  text-align: left;
+  padding-left:10px;
+}
+.section button {
+    width:97%;
+    height:9px;
+    margin-top:10px;
+    color:white;
+    border-radius:10px;
+    border-style:none;
+    background-color:rgb(238, 238, 43);
 }
 </style>
 </head>
@@ -63,7 +79,7 @@
             <i class="fas fa-solid fa-user-tag"></i>
             <span>Merit List</span>
         </a>
-        <a href="reports.html">
+        <a href="reports.php">
             <i class="fas fa-solid fa-envelope"></i>
             <span>Reports</span>
         </a>
@@ -85,8 +101,9 @@
         $resultCount = $con->query($sqlCount);
         $row = $resultCount->fetch_assoc();
         $RegCount = $row['count'];
-        echo "<h2>TOTAL USER REGISTERED</h2>";
-        echo "<h2>$RegCount</h2>";
+        echo "<h1>$RegCount</h1>";
+        echo "<h2>Total User Registered</h2>";
+        echo "<button>.</button>";
         $con->close();
         ?>
         </div>
@@ -97,8 +114,9 @@
         $entranceresultCount = $con->query($sqlentranceCount);
         $rowentrance = $entranceresultCount->fetch_assoc();
         $entranceCount = $rowentrance['entrancecount'];
-        echo "<h2>TOTAL TEST APPEARANCE</h2>";
-        echo "<h2>$entranceCount</h2>";
+        echo "<h1>$entranceCount</h1>";
+        echo "<h2>Total Test Appearance</h2>";
+        echo "<button>.</button>";
         $con->close();
         ?>
         </div>
@@ -109,8 +127,9 @@
         $resultadmitCount = $con->query($sqlCountadmit);
         $rowadmit = $resultadmitCount->fetch_assoc();
         $admittedstudentCount = $rowadmit['admittedcount'];
-        echo "<h2>TOTAL STUDENT ADMITTED</h2>";
-        echo "<h2>$admittedstudentCount</h2>";
+        echo "<h1>$admittedstudentCount</h1>";
+        echo "<h2>Total Student Admitted</h2>";
+        echo "<button>.</button>";
         $con->close();
         ?>
         </div>

@@ -8,6 +8,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <style>
+.heading-container{
+ margin-left:310px ;  
+ padding-top: 100px;
+ padding-bottom: 10px;
+ font-size: xx-large;
+ font-weight:bold;
+
+}
+.report-container{
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+}
+.report-container > div {
+    background-color: #fffefef6;
+    margin-left: 310px;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 20px;
+    width: 800px;
+}
+    </style>
 </head>
 
 <body>
@@ -50,9 +73,25 @@
         </div>
         <a href="../LogIn/logout.php"><button onclick="return confirm('Are you sure you want to logout?')"
             type="submit">Logout</button></a>    </div>
-
+<div class="heading-container">Reports</div>
+<div class="report-container">
+<?php
+include '../LogIn/db.php';
+$sql = "SELECT * FROM reports";
+$result = $con->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo '<div>';
+        echo '<p>Name: ' . $row["name"] . '</p>';
+        echo '<p>Email: ' . $row["email"] . '</p>';
+        echo '<p>Message: ' . $row["message"] . '</p>';
+        echo '</div>'; 
+    }
+} else {
+    echo "No form data found in the database.";
+}
+$con->close();
+?>
+</div>
 </body>
-
-</body>
-
 </html>

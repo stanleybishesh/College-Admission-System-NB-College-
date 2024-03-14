@@ -1,0 +1,59 @@
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    }
+.flex-container > div {
+    
+    background-color: #fffefef6;
+    margin-left: 310px;
+    padding: 20px;
+    margin-top: 100px;
+    }
+
+.flex-container div h2 {
+   padding-bottom: 60px;
+}
+.flex-container div form label{
+   font-size: 20px;
+   color: gray;
+}
+.flex-container div form input[type=text] {
+    background-color: white;
+    padding-left: 20px;
+    height: 44px;
+    width: 600px;
+    margin-top: 10px;
+  }
+.flex-container div form button{
+    height: 45px;
+    width: 140px;
+    margin-top: 20px;
+    color: white;
+    background-color:#0b0d92d2;
+    border-style: none;
+    border-radius: 10px;
+}
+.flex-container div table{
+    border-style: solid none;
+    width: 100%;
+    border-collapse: collapse;
+}
+table caption{
+    font-size: x-large;
+    margin: 10px;
+}
+table th,
+table td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #f5f5f5;
+}

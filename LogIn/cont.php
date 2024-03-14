@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Body = "Dear $name,\n\nThank you for contacting us.\n\nWe have received your message and will get back to you soon.\nIn the meantime, please visit our website for more information.\n www.NBCOLLEGE.com.np \n\nBest regards,\nAdmin\nNB College";
             $mail->send();
 
-        echo "<script>alert('Message send successfully!');
+        echo "<script>alert('Message sent successfully!');
         window.location.href = 'main.html';
         </script>";
     } catch (Exception $e) {

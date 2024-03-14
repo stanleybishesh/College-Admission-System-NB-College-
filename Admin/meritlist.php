@@ -24,34 +24,26 @@ $conn->close();
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
     <style>
-   .listbar{
+        .listbar{
+            width: 75%;
+            margin: 100px 330px;
+            position: absolute;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin-left:20%;
-            margin-right:3%;
-            text-align: center;
             flex-direction:column;
         }
         table {
-            border-collapse: collapse;
+            /* border-collapse: collapse; */
             width: 100%;
             margin-top: 20px;
         }
-        table, th, td {
-            border: 1px solid black;   
-        }
         td {
-            background-color:#f0f0f0;
+            background-color:rgba(152, 152, 152, 0.66);
             padding: 10px;
-            text-align: center;
         }
         th {
             padding: 10px;
-            text-align: center;
-            background-color: #0b0d92d2;
-            color: white; 
+            text-align: left;
+            background-color: rgba(89, 89, 242, 0.871);
         }
      
     </style>
@@ -99,7 +91,7 @@ $conn->close();
                 type="submit">Logout</button></a>
     </div>
 <div class="listbar">
-    <h2>EXAMINANT MERIT LIST</h2>
+    <h2>Examinees Merit List</h2>
 
     <?php
     if ($result->num_rows > 0){

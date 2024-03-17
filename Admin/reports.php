@@ -89,7 +89,7 @@
                     echo '</div>'; 
                 }
             } else {
-                echo "<script>alert('No form data found in the database');</script>";
+                echo "<script>alert('No report for now');</script>";
                 echo "<script>window.location.href ='dashboard.php'</script>";
             }
             $con->close();

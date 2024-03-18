@@ -57,7 +57,7 @@
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="searchQuery">Search By Student Name / Number / Email</label><br>
         <input type="text" name="searchQuery" id="searchInput" ><br>
-        <button type="submit">search</button>
+        <button type="submit">Search</button>
     </form>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchQuery'])) {

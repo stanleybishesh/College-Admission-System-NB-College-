@@ -123,13 +123,13 @@ if (strlen($_SESSION['uid']==0)) {
 </div>
 <div class="info-container">
         <h1 style=color:red;>WHAT TO DO AFTER ENTRANCE ?</h1>
-        <h3>1. If u have passed the examination with score of 60% or above:</h3>
+        <h3>1. If u have passed the examination with score of 40% or above:</h3>
             <p>a. Login to Admission portal with the same login details.</p>
             <p>b. Fill out the Admission form.</p>
             <p>c. Wait for Admin Approval.</p>
             <p>d. After Approval, Submit the required fees.</p>
 
-        <h3>2. If u have cleared examination with score below 60%:</h3>
+        <h3>2. If u have cleared examination with score below 40%:</h3>
         <p>a. Contact College administrators for further details.</p>
 </div>
 </body>

@@ -62,7 +62,7 @@ if (strlen($_SESSION['uid'])==0) {
             <p style="color: white; text-align: justify;">Before starting Test, read the criteria give below carefully
             </p>
             <ul class="rules-lists">
-                <li>1. A examinee is eligible for admission only if he/she scores 80% or above.</li>
+                <li>1. A examinee is eligible for admission only if he/she scores 40% or above.</li>
                 <li>2. In case of Failure ,examinee is requested to visit college for further enquires.</li>
             </ul>
         </div>

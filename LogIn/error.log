@@ -1,0 +1,2 @@
+[14-Mar-2024 15:49:44 Europe/Berlin] Message could not be sent. Mailer Error: SMTP Error: Could not connect to SMTP host. Connection failed. stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failedSMTP server error: QUIT command failed

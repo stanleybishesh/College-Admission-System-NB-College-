@@ -34,6 +34,10 @@
     border-style: none;
     border-radius: 10px;
 }
+.flex-container div form button:hover{
+    cursor: pointer;
+    background-color:#0b0d92a3;
+}
 .flex-container div table{
     border-style: solid none;
     width: 100%;

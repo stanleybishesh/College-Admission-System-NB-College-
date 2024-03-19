@@ -2,13 +2,11 @@
 session_start();
 error_reporting(0);
 include '../LogIn/db.php';
-// echo $_SESSION['result_id'];
-// if (strlen($_SESSION['result_id']==0)) {
-//     header('location:../LogIn/logout.php');
-//   } else{
-//     $result_id=$_SESSION['result_id'];
-    $applicationData = mysqli_query($con, "SELECT * FROM admission_users JOIN users ON admission_users.user_id=users.id");
-  ?>
+$applicationData = mysqli_query($con, "SELECT * FROM admission_users
+                                        JOIN users ON admission_users.user_id=users.id
+                                        JOIN user_results ON admission_users.user_results_id=user_results.ID 
+                                        ORDER BY user_results.total_marks DESC");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,6 +83,7 @@ include '../LogIn/db.php';
                     <th>Last Name</th>
                     <th>Phone</th>
                     <th>Email</th>
+                    <th>Score</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -107,8 +106,16 @@ include '../LogIn/db.php';
                         echo "<td>" . $applicationRow['last_name'] . "</td>";
                         echo "<td>" . $applicationRow['number'] . "</td>";
                         echo "<td>" . $applicationRow['email'] . "</td>";
+                        echo "<td>" . $applicationRow['total_marks'] . "</td>";
                         echo "<td class='$statusClass'>$status</td>";
-                        echo "<td><a href='selectOrReject.php?user_results_id=" . $applicationRow['user_results_id'] . "'><i class='fas fa-solid fa-eye'></i> View</a></td>";
+                        
+                        // Conditionally show/hide the view link based on status
+                        if ($status === 'pending') {
+                            echo "<td><a href='selectOrReject.php?user_results_id=" . $applicationRow['user_results_id'] . "'><i class='fas fa-solid fa-eye'></i> View</a></td>";
+                        } else {
+                            echo "<td><i class='fas fa-solid fa-eye-slash'></i></i> View</td>";
+                        }
+                        
                         echo "</tr>";
                         $serialNumber++;
                     }

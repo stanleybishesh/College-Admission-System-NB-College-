@@ -8,8 +8,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+// Initialize default row count
+$rowCount = isset($_GET['rowCount']) ? intval($_GET['rowCount']) : 10;
 
-$sql = "SELECT ID,username,email,total_marks FROM user_results ORDER BY total_marks DESC LIMIT 10";
+$sql = "SELECT ID, username, email, total_marks FROM user_results ORDER BY total_marks DESC LIMIT $rowCount";
 $result = $conn->query($sql);
 $conn->close();
 ?>
@@ -34,7 +36,7 @@ $conn->close();
         table {
             /* border-collapse: collapse; */
             width: 100%;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         td {
             background-color:rgba(152, 152, 152, 0.66);
@@ -44,6 +46,24 @@ $conn->close();
             padding: 10px;
             text-align: left;
             background-color: rgba(89, 89, 242, 0.871);
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .options input[type="number"] {
+            background-color: white;
+            border-radius: 5px;
+            margin: 5px 10px 5px 0px;
+            padding:5px 10px;
+            width: 100px;
+        }
+        .options button{
+            border: 2px solid black;
+            width: 30px;
+        }
+        .options button:hover{
+            background-color: lightblue;
+            cursor: pointer;
         }
      
     </style>
@@ -90,20 +110,35 @@ $conn->close();
         <a href="../LogIn/logout.php"><button onclick="return confirm('Are you sure you want to logout?')"
                 type="submit">Logout</button></a>
     </div>
-<div class="listbar">
-    <h2>Examinees Merit List</h2>
+    <div class="listbar">
+        <h2>Examinees Merit List</h2>
 
-    <?php
-    if ($result->num_rows > 0){
-        echo "<table><tr><th>ID</th><th>Username</th><th>Email</th><th>Total Marks</th></tr>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr><td>{$row['ID']}</td><td>{$row['username']}</td><td>{$row['email']}</td><td>{$row['total_marks']}</td></tr>";
+        <div class="options">
+            <label for="rowCount">Show:</label><br>
+            <input type="number" id="rowCount" min="1" max="100" value="10">
+            <button onclick="updateRows()"><i class="fas fa-solid fa-check"></i></i></button>
+        </div>
+
+        <?php
+            $serialNumber = 1;
+            if ($result->num_rows > 0){
+                echo "<table><tr><th>SN</th><th>Username</th><th>Email</th><th>Total Marks</th></tr>";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $serialNumber . "</td><td>{$row['username']}</td><td>{$row['email']}</td><td>{$row['total_marks']}</td></tr>";
+                    $serialNumber++;
+                }
+                echo "</table>";
+            } else {
+                echo "<script>alert('No records found in the database.');</script>";
+                echo "<script>window.location.href='dashboard.php';</script>";
+            }
+        ?>
+    </div>
+    <script>
+        function updateRows() {
+            var rowCount = document.getElementById("rowCount").value;
+            window.location.href = "meritlist.php?rowCount=" + rowCount;
         }
-        echo "</table>";
-    } else {
-        echo "<p>No records found in the database.</p>";
-    }
-    ?>
-</div>
+    </script>
 </body>
 </html>

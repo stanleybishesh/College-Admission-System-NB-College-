@@ -16,7 +16,10 @@
       header("Location:../Admin/dashboard.php");
       exit();
     } else {
-      echo "<script>alert('Invalid Details');</script>";
+      echo "<script>
+              alert('Invalid Details');
+              window.location.href='adminlogin.html';  
+            </script>";
     }
   }
   ?>

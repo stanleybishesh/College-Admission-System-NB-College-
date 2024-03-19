@@ -27,10 +27,9 @@ curl_close($ch);
 
 $applicationData = mysqli_query($con, "SELECT * FROM admission_users WHERE user_results_id='{$_SESSION['result_id']}'");
 $applicationRow = mysqli_fetch_assoc($applicationData);
-// $_SESSION['admission_users_id'] = $applicationRow['id'];
-// $admission_users_id=$_SESSION['admission_users_id'];
+$_SESSION['admission_users_id'] = $applicationRow['id'];
 
-if (strlen($_SESSION['uid']==0)) {
+if (strlen($_SESSION['result_id']==0)) {
   header('location:../LogIn/logout.php');
   } else{
     $status_query = mysqli_query($con, "SELECT * FROM appstatus WHERE admission_users_id={$applicationRow['id']}");
@@ -94,16 +93,16 @@ if (strlen($_SESSION['uid']==0)) {
         <div class="fee-section">
             <h3>Admission Fee</h3>
             <form action="" method="post">
-                <label for="feeAmount">Payment Amount</label><br>
-                <input type="text" value="<?php echo $fee; ?>" disabled><br>
-                <label for="mode">Mode of Payment</label><br>
-                <select name="mode" id="mode" required>
+                <label for="fee_amount">Payment Amount</label><br>
+                <input type="text" id="fee_amount" name="fee_amount" value="<?php echo $fee; ?>" disabled><br>
+                <label for="mode_of_payment">Mode of Payment</label><br>
+                <select name="mode_of_payment" id="mode_of_payment" required>
                     <option value="default" selected disabled>Choose Mode of Payment</option>
                     <option value="khalti">Khalti Wallet</option>
                 </select><br>
-                <label for="date">Date of Transaction</label><br>
-                <input type="date" required><br>
-                <button type="submit" id='payment-button'>Pay with Khalti</button>
+                <label for="transaction_date">Date of Transaction</label><br>
+                <input type="date" name="transaction_date" id="transaction_date" required><br>
+                <button type="button" id='payment-button'>Pay with Khalti</button>
             </form>
         </div>
     </div>
@@ -123,11 +122,43 @@ if (strlen($_SESSION['uid']==0)) {
                 "SCT",
                 ],
             "eventHandler": {
-                onSuccess (payload) {
-                    // hit merchant api for initiating verfication
-                    console.log(payload);
-                    alert("Payment Success. Thankyou !");
-                    window.location.href = "dashboard.php";
+                onSuccess(payload) {
+                    // Extract necessary data from the payload
+                    // var transactionId = payload.idx;
+                    var paymentAmount = document.getElementById('fee_amount').value;
+
+                    // Get other form data
+                    var mode = document.getElementById('mode_of_payment').value;
+                    var transactionDate = document.getElementById('transaction_date').value;
+
+                    // Prepare form data to be sent to the server
+                    var formData = new FormData();
+                    formData.append('fee_amount', paymentAmount);
+                    formData.append('mode_of_payment', mode);
+                    formData.append('transaction_date', transactionDate);
+
+                    // Make an AJAX request to insert data into the admitted_users table
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'insert_admitted_users.php', true);
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            // Insertion successful
+                            console.log(xhr.responseText);
+                            alert("Payment Success. Your admission has been confirmed. Thank you!");
+                            window.location.href = "dashboard.php";
+                        } else {
+                            // Error handling
+                            console.error(xhr.statusText);
+                            alert("An error occurred while processing your admission. Please contact support.");
+                            window.location.href = "fees.php"; // Redirect to fees page
+                        }
+                    };
+                    xhr.onerror = function() {
+                        console.error(xhr.statusText);
+                        alert("An error occurred while processing your admission. Please contact support.");
+                        window.location.href = "fees.php"; // Redirect to fees page
+                    };
+                    xhr.send(formData);
                 },
                 onError (error) {
                     console.log(error);

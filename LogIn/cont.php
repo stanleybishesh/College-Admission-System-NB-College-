@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         $mail = new PHPMailer(true);
 
-        /*Disabling SSL certificate verification*/
         $mail->SMTPOptions = array(
             'ssl' => array(
                 'verify_peer' => false,
@@ -26,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             )
         );        
         try {
-            //Server settings
+           
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com'; 
             $mail->SMTPAuth = true;
@@ -43,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Body = "Dear $name,\n\nThank you for contacting us.\n\nWe have received your message and will get back to you soon.\nIn the meantime, please visit our website for more information.\n www.NBCOLLEGE.com.np \n Watch our Video: \n https://youtu.be/WMmqVsW5RTk \n\nBest regards,\nAdmin\nNB College";
             $mail->send();
 
-        echo "<script>alert('Message sent successfully!');
+        echo "<script>alert('Thankyou for Contacting us. We will get back to you through email.');
         window.location.href = 'main.html';
         </script>";
     } catch (Exception $e) {

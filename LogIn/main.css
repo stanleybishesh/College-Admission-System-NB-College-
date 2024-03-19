@@ -7,6 +7,21 @@
     margin: 0;
     padding: 0;
 }
+#video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; 
+  overflow: hidden;
+}
+
+#intro-video {
+  width: 101%;
+  height: 105%;
+  object-fit: cover;
+}
 
 body {
     margin: 0;
@@ -98,13 +113,14 @@ body {
     background-color: #0b0d92d2;
     border: none;
     color: white;
+    
   }
   .main-content .form-display{
   background-color: rgba(0, 0, 0, 0.159);
 }
 .form-display h3{
   font-weight: bold;
-  color: rgb(0, 0, 106);
+  color: rgb(253, 249, 18);
   text-align: center;
   font-size: 2em;
   padding-top: 20px;

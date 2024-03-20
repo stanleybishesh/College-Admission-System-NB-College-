@@ -37,6 +37,17 @@ if (strlen($_SESSION['result_id']==0)) {
     $remark = $status_row['remark'];
     $fee = $status_row['fee'];
     $status = $status_row['status']; // Fetch status from the database
+
+    // Check if the user's admission ID exists in admitted_users table
+    $admittedUserCheckQuery = "SELECT * FROM admitted_users WHERE admission_users_id = {$_SESSION['admission_users_id']}";
+    $admittedUserCheckResult = mysqli_query($con, $admittedUserCheckQuery);
+    $admittedUserExists = mysqli_num_rows($admittedUserCheckResult) > 0;
+
+    if ($admittedUserExists) {
+        echo "<script>alert('You have already paid the admission fee !');</script>";
+        echo "<script>window.location.href = 'dashboard.php';</script>";
+        exit; // Stop further execution
+    }
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +97,7 @@ if (strlen($_SESSION['result_id']==0)) {
     </div>
     
     <div class="fee-content">
-        <p class="remark" style="color: <?php echo $status == 'selected' ? 'green' : 'red'; ?>"><?php echo $remark; ?></p>
+        <h2 class="remark" style="color: <?php echo $status == 'selected' ? 'green' : 'red'; ?>"><?php echo $remark; ?></h2>
         <?php 
             if ($status == 'selected') {
         ?>
@@ -145,7 +156,7 @@ if (strlen($_SESSION['result_id']==0)) {
                             // Insertion successful
                             console.log(xhr.responseText);
                             alert("Payment Success. Your admission has been confirmed. Thank you!");
-                            window.location.href = "dashboard.php";
+                            window.location.href = "paymentSuccess.php";
                         } else {
                             // Error handling
                             console.error(xhr.statusText);

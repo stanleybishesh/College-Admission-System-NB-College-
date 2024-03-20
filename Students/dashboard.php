@@ -19,6 +19,7 @@ if (strlen($_SESSION['result_id']) == 0) {
     <title>Dashboard Students</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="dashboard.css">
     <style>
@@ -92,7 +93,11 @@ if (strlen($_SESSION['result_id']) == 0) {
                     echo "<td>" . $applicationRow['submission_date'] . "</td>";
                     echo "<td>" . $applicationRow['course'] . "</td>";
                     echo "<td class='$statusClass'>$status</td>";
-                    echo "<td><a href='editAdmissionForm.php'><i class='fas fa-solid fa-pen'></i> Edit</a></td>";
+                    if ($status === 'pending') {
+                        echo "<td><a href='editAdmissionForm.php'><i class='fas fa-solid fa-pen'></i> Edit</a></td>";
+                    } else {
+                        echo "<td><i class='fi fi-ss-pen-slash'></i> Edit</span></td>";
+                    }
                     echo "<td><a href='displayAdmissionForm.php'><i class='fas fa-solid fa-eye'></i> View</a></td>";
                     echo "</tr>";
                 }

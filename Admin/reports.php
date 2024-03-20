@@ -64,7 +64,7 @@
         </a>
         <a href="regUsers.php">
             <i class="fas fa-solid fa-users"></i>
-            <span>Registered Users</span>
+            <span>Admitted Students</span>
         </a>
         <a href="application.php">
             <i class="fas fa-solid fa-folder-open"></i>
@@ -80,7 +80,7 @@
         </a>
         <a href="reports.php" class="active">
             <i class="fas fa-solid fa-envelope"></i>
-            <span>Reports</span>
+            <span>Inquiries</span>
         </a>
     </div>
 

@@ -10,19 +10,18 @@
     <link rel="stylesheet" href="../styles.css">
 <style>
 .flex-container {
+  padding: 100px 0px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 43vh;
-  margin-left: 19%;
+  flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+  justify-content: center; /* Distribute flex items evenly along the main axis */
+  align-items: flex-start; /* Align items to the start of the cross axis */
+  margin-left: 10%;
   margin-right: 1%;
+  gap: 50px;
 }
 
 .section {
-  flex: 1;
-  width: 100px;
-  height: 100px;
-  margin: 15px;
+  width: calc(32% - 20px); /* Set width to 50% of the container width minus margin */
   padding: 20px;
   background-color: white;
   border-radius: 8px;
@@ -65,7 +64,7 @@
         </a>
         <a href="regUsers.php">
             <i class="fas fa-solid fa-users"></i>
-            <span>Registered Users</span>
+            <span>Admitted Students</span>
         </a>
         <a href="application.php">
             <i class="fas fa-solid fa-folder-open"></i>
@@ -81,7 +80,7 @@
         </a>
         <a href="reports.php">
             <i class="fas fa-solid fa-envelope"></i>
-            <span>Reports</span>
+            <span>Inquiries</span>
         </a>
     </div>
 
@@ -102,7 +101,7 @@
         $row = $resultCount->fetch_assoc();
         $RegCount = $row['count'];
         echo "<h1>$RegCount</h1>";
-        echo "<h2>Total User Registered</h2>";
+        echo "<h2>Total Users Registered</h2>";
         echo "<button>.</button>";
         $con->close();
         ?>
@@ -123,12 +122,25 @@
         <div class="section">
         <?php
         include '../LogIn/db.php';
-        $sqlCountadmit = "SELECT COUNT(*) as admittedcount FROM admission_users";
+        $sqlCountadmit = "SELECT COUNT(*) as appCount FROM admission_users";
+        $resultappCount = $con->query($sqlCountadmit);
+        $rowapp = $resultappCount->fetch_assoc();
+        $applicationCount = $rowapp['appCount'];
+        echo "<h1>$applicationCount</h1>";
+        echo "<h2>Total Admission Applications</h2>";
+        echo "<button>.</button>";
+        $con->close();
+        ?>
+        </div>
+        <div class="section">
+        <?php
+        include '../LogIn/db.php';
+        $sqlCountadmit = "SELECT COUNT(*) as admittedcount FROM admitted_users";
         $resultadmitCount = $con->query($sqlCountadmit);
         $rowadmit = $resultadmitCount->fetch_assoc();
         $admittedstudentCount = $rowadmit['admittedcount'];
         echo "<h1>$admittedstudentCount</h1>";
-        echo "<h2>Total Student Admitted</h2>";
+        echo "<h2>Total Admitted Students</h2>";
         echo "<button>.</button>";
         $con->close();
         ?>

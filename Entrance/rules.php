@@ -116,7 +116,7 @@ if (strlen($_SESSION['uid']==0)) {
                $approw = $entranceapp->fetch_assoc();
                $tapperance = $rowmark? $approw["apperance"] : "0";
                echo "<h1>$tapperance</h1>";
-               echo "<h2>Entrance Apperance</h2>";
+               echo "<h2>Entrance Appearance</h2>";
                echo "<button>.</button>";
                ?>
            </div>

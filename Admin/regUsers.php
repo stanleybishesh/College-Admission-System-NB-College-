@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    error_reporting(0);
+    include '../LogIn/db.php';
+
+    // Fetch admitted students data with required joins
+    $admittedStudentsData = mysqli_query($con, "SELECT * FROM admission_users AS adu
+                                                JOIN users AS u ON u.id=adu.user_id
+                                                JOIN user_results AS ur ON ur.id=adu.user_results_id
+                                                JOIN admitted_users AS au ON au.admission_users_id = adu.id");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,48 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-    <style>
-        .listbar{
-            width: 75%;
-            margin: 100px 330px;
-            position: absolute;
-            display: flex;
-            flex-direction:column;
-        }
-        table {
-            /* border-collapse: collapse; */
-            width: 100%;
-            margin-top: 10px;
-        }
-        td {
-            background-color:rgba(152, 152, 152, 0.66);
-            padding: 10px;
-        }
-        th {
-            padding: 10px;
-            text-align: left;
-            background-color: rgba(89, 89, 242, 0.871);
-        }
-        .options {
-            margin-top: 10px;
-        }
-        .options input[type="number"] {
-            background-color: white;
-            border-radius: 5px;
-            margin: 5px 10px 5px 0px;
-            padding:5px 10px;
-            width: 100px;
-        }
-        .options button{
-            border: 2px solid black;
-            width: 30px;
-        }
-        .options button:hover{
-            background-color: lightblue;
-            cursor: pointer;
-        }
-     
-    </style>
+    <link rel="stylesheet" href="regUsers.css">
 </head>
 
 <body>
@@ -65,7 +36,7 @@
         </a>
         <a href="regUsers.php" class="active">
             <i class="fas fa-solid fa-users"></i>
-            <span>Registered Users</span>
+            <span>Admitted Students</span>
         </a>
         <a href="application.php">
             <i class="fas fa-solid fa-folder-open"></i>
@@ -81,7 +52,7 @@
         </a>
         <a href="reports.php">
             <i class="fas fa-solid fa-envelope"></i>
-            <span>Reports</span>
+            <span>Inquiries</span>
         </a>
     </div>
 
@@ -91,87 +62,47 @@
             <h2>NB College Admission System</h2>
         </div>
         <a href="../LogIn/logout.php"><button onclick="return confirm('Are you sure you want to logout?')"
-            type="submit">Logout</button></a>    </div>
+            type="submit">Logout</button></a>   
+    </div>
 
-<div class="listbar">
-    <?php
-   include '../LogIn/db.php';
-   $sql = "SELECT au.id,au.course, au.citizenship, au.first_name, au.last_name, au.dob, au.gender
-        FROM admission_users AS au JOIN appstatus AS asp ON au.id = asp.admission_users_id WHERE asp.status = 'selected'";
-$result = $con->query($sql);
+    <div class="admitted-students">
+        <h2>Admitted Students List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Course</th>
+                    <th>Full Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Citizenship</th>
+                    <th>Score</th>
+                    <th>Transaction Date</th>
+                    <th>Fee Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $serialNumber = 1;
+                    // Display admitted students data in table rows
+                    while ($row = mysqli_fetch_assoc($admittedStudentsData)) {
+                        echo "<tr>";
+                        echo "<td>" . $serialNumber . "</td>";
+                        echo "<td>" . $row['course'] . "</td>";
+                        echo "<td>" . $row['fullname'] . "</td>";
+                        echo "<td>" . $row['number'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td>" . $row['citizenship'] . "</td>";
+                        echo "<td>" . $row['total_marks'] . "</td>";
+                        echo "<td>" . $row['transaction_date'] . "</td>";
+                        echo "<td>" . $row['fee_amount'] . "</td>";
+                        echo "</tr>";
+                        $serialNumber++;
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
-$bca_users = array();
-$csit_users = array();
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        if ($row["course"] == "bca") {
-            $bca_users[] = $row;
-        } elseif ($row["course"] == "bsccsit") {
-            $csit_users[] = $row;
-        }
-    }
-}
-
-if (!empty($bca_users)) {
-    echo "<h2>BCA Course</h2>";
-    echo "<table border='1'>
-            <tr>
-                <th>User ID</th>
-                <th>Course</th>
-                <th>Citizenship</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>DOB</th>
-                <th>Gender</th>
-            </tr>";
-    foreach ($bca_users as $user) {
-        echo "<tr>
-                <td>".$user["id"]."</td>
-                <td>".$user["course"]."</td>
-                <td>".$user["citizenship"]."</td>
-                <td>".$user["first_name"]."</td>
-                <td>".$user["last_name"]."</td>
-                <td>".$user["dob"]."</td>
-                <td>".$user["gender"]."</td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "<p>No BCA users found</p>";
-}
-
-if (!empty($csit_users)) {
-    echo "<h2>CSIT Course</h2>";
-    echo "<table border='1'>
-            <tr>
-                <th>User ID</th>
-                <th>Course</th>
-                <th>Citizenship</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>DOB</th>
-                <th>Gender</th>
-            </tr>";
-    foreach ($csit_users as $user) {
-        echo "<tr>
-                <td>".$user["id"]."</td>
-                <td>".$user["course"]."</td>
-                <td>".$user["citizenship"]."</td>
-                <td>".$user["first_name"]."</td>
-                <td>".$user["last_name"]."</td>
-                <td>".$user["dob"]."</td>
-                <td>".$user["gender"]."</td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "<p>No CSIT users found</p>";
-}
-
-    $con->close();
-    ?>
-
-</div>
 </body>
 </html>

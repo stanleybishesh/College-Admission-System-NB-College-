@@ -8,6 +8,9 @@ if (strlen($_SESSION['result_id']) == 0) {
 } else {
     $result_id = $_SESSION['result_id'];
     $applicationData = mysqli_query($con, "SELECT * FROM admission_users WHERE user_results_id='$result_id'");
+    $admData = mysqli_query($con, "SELECT * FROM admission_users WHERE user_results_id='{$_SESSION['result_id']}'");
+    $admRow = mysqli_fetch_assoc($admData);
+    $_SESSION['admission_users_id'] = $admRow['id'];
 ?>
 
 <!DOCTYPE html>
@@ -76,6 +79,7 @@ if (strlen($_SESSION['result_id']) == 0) {
                     <th>Status</th>
                     <th>Edit</th>
                     <th>View</th>
+                    <th>Payment</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,6 +103,14 @@ if (strlen($_SESSION['result_id']) == 0) {
                         echo "<td><i class='fi fi-ss-pen-slash'></i> Edit</span></td>";
                     }
                     echo "<td><a href='displayAdmissionForm.php'><i class='fas fa-solid fa-eye'></i> View</a></td>";
+                    // Check if the user has paid the fee
+                    $admittedQuery = mysqli_query($con, "SELECT * FROM admitted_users WHERE admission_users_id = '{$applicationRow['id']}'");
+                    $isAdmitted = mysqli_num_rows($admittedQuery) > 0;
+                    if ($isAdmitted) {
+                        echo "<td><a href='paymentSuccess.php'><i class='fas fa-solid fa-dollar-sign'></i> Payment</a></td>";
+                    } else {
+                        echo "<td>Fees not paid</td>";
+                    }
                     echo "</tr>";
                 }
                 ?>

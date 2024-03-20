@@ -1,0 +1,36 @@
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    }
+
+.flex-container > div {
+    background-color: #fffefef6;
+    margin-left: 310px;
+    padding: 20px;
+    margin-top: 100px;
+    }
+
+.flex-container > div > h2 {
+    padding-bottom: 50px;
+    }
+
+.section{
+    background-color: rgb(197,227,231);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.section button {
+    height: 45px;
+    width: 140px;
+    margin-top: 20px;
+    color: white;
+    background-color:#0b0d92d2;
+    border-style: none;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+

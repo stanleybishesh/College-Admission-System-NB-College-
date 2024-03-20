@@ -30,6 +30,24 @@
             border-radius: 20px;
             width: 800px;
         }
+        .report-button{
+            height: 45px;
+            width: 140px;
+            margin-top: 20px;
+            margin-left:20px;
+            color: white;
+            background-color:#0b0d92d2;
+            border-style: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .report-button a{
+            text-decoration: none;
+            color: white;
+        }
+        button:hover{
+            background-color: #0b0d929e;
+  }
     </style>
 </head>
 
@@ -78,6 +96,19 @@
     <div class="report-container">
         <?php
             include '../LogIn/db.php';
+
+            if(isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['report_id'])) {
+                $report_id = $_GET['report_id'];
+                $deletesql = "DELETE FROM reports WHERE report_id = $report_id";
+                if ($con->query($deletesql) === TRUE) {
+                    echo "<script>alert('Report deleted successfully');</script>";
+                    echo "<script>window.location.href ='reports.php'</script>";
+                    exit; 
+                } else {
+                    echo "Error deleting report: " . $con->error;
+                }
+            }
+
             $sql = "SELECT * FROM reports";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
@@ -86,6 +117,8 @@
                     echo '<p>Name: ' . $row["name"] . '</p>';
                     echo '<p>Email: ' . $row["email"] . '</p>';
                     echo '<p>Message: ' . $row["message"] . '</p>';
+                    echo '<button class="report-button"><a href="mailto:' . $row["email"] . '">Reply</a></button>';
+                    echo '<button class="report-button" onclick="confirmDelete(' . $row["report_id"] . ')">Delete</button>';
                     echo '</div>'; 
                 }
             } else {
@@ -95,5 +128,12 @@
             $con->close();
         ?>
     </div>
+    <script>
+    function confirmDelete(report_id) {
+        if (confirm("Are you sure you want to delete this report?")) {
+            window.location.href = 'reports.php?action=delete&report_id=' + report_id;
+        }
+    }
+</script>
 </body>
 </html>

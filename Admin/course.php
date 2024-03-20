@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="courseapply.css">
 </head>
 
 <body>
@@ -51,8 +52,38 @@
         <a href="../LogIn/logout.php"><button onclick="return confirm('Are you sure you want to logout?')"
                 type="submit">Logout</button></a>
     </div>
+    <div class="flex-container">
+        <div>
+            <h2>COURSE AVAILABLE</h2>
+      <div class="section">
+        <h1>BCA</h1>
+        <h3>Department of Humanities and Social Science<h3>
+        <button onclick="window.location.href='editquestion.php'">Edit Questions</button>
+        <button onclick="addNewStaff()">Add New Staff</button>
+        <button onclick="window.location.href='regUsers.php'">View Students</button>
+</div>
+      <div class="section">
+        <h1>Bsc.CSIT</h1>
+        <h3>Department of Information and Technology<h3>
+        <button onclick="window.location.href='editquestion.php'">Edit Questions</button>
+        <button onclick="addNewStaff()">Add New Staff</button>
+        <button onclick="window.location.href='regUsers.php'">View Students</button>
+      </div>
+      <script>
+    function addNewStaff() {
+        const staffName = prompt('Enter the name of the new staff:');
+        const staffrole = prompt('Enter the position of the new staff:');
+        if (staffName !== null && staffName !=='' && staffrole !== null && staffrole !== '') {
+            alert('Successfully registered!');
+        } else {
+          
+            return;
+        }
+    }
+</script>
 
-</body>
+</div>
+</div>
 
 </body>
 

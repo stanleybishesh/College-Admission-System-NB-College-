@@ -13,11 +13,18 @@
 </head>
 
 <body>
-    <!-- <div id="video-container">
+    <div id="video-container">
         <video id="intro-video" autoplay muted>
             <source src="images/logo.mp4" type="video/mp4">
         </video>
-    </div> -->
+    </div>
+    <script>
+        const introVideo = document.getElementById("intro-video");
+        introVideo.onended = function() {
+            document.getElementById("video-container").style.display = "none";
+        };
+    </script>
+
     <div class="container">
         <div id="home" class="navbar">
             <div class="logo">
@@ -41,13 +48,34 @@
 
         <div class="main-content">
             <div class="hero-section">
-                <h1 class="heading">Welcome to <span>NB COLLEGE</span></h1>
+                <h1 class="heading">Welcome to <span id="demo">NB COLLEGE</span></h1>
+                <script>
+                    var i = 0;
+                    var speed = 190;
+                    var text = document.getElementById("demo").textContent;
+                    window.onload = function() {
+                    typeWriter();
+                    };
+
+                    function typeWriter() {
+                    var header = document.getElementById("demo");
+                    if (i < text.length) {
+                    header.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                    } else {
+                    i = 0;
+                    header.innerHTML = '';
+                    setTimeout(typeWriter, speed);
+                }
+            }
+                </script>
                 <p>"To those of you who received honors, awards and distinctions, I say well done. And to the C
                     students, I say you too may one day be president of the United States."<br>– George W. Bush</p>
                 <a href="#about-us"><button>Learn More</button></a>
             </div>
             <div class="form-display">
-                <h3>BOOK FOR COUNSELLING</h3>
+                <h3>FIND OUT MORE?</h3>
                 <form action="mainApply.php" method="post">
                     <select name="course" id="course">
                         <option value="default" selected disabled>Select Faculty</option>
@@ -71,9 +99,10 @@
             <h3>ABOUT US</h3>
             <img src="images/pexels-edmond-dantès-4342401.jpg" alt="">
             <h5>Mr. Nick Brask <br>Founder</h5>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur vitae hic minima harum corporis at
-                nulla optio praesentium dolor voluptates reprehenderit maxime, laudantium odit. Ipsam libero earum optio
-                amet quis.</p>
+            <p>"Welcome to NB College! Here, we're more than just a place of learning – we're a community 
+                dedicated to your success. With our support, guidance, and resources, you'll grow not only 
+                academically but personally too. Embrace the opportunities ahead, challenge yourself, and 
+                let's build a future of excellence together."</p>
         </div>
         <div class="about-right">
             <h1>BEHIND THE SUCCESS</h1>

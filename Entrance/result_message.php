@@ -64,11 +64,10 @@
 <body>
     <div class="message-container">
         <?php
-            // Check if the 'message' parameter is set in the URL
+            
             if (isset($_GET['message'])) {
                 $message = htmlspecialchars($_GET['message']);
-                
-                // Check if it's a success or failure message and apply corresponding CSS class
+               
                 if (strpos($message, 'Congratulations') !== false) {
                     echo "<img class='celebration' src='../image/nblogo.png' alt='Congratulations'>";
                     echo "<p class='success-score'>$message</p>";
@@ -77,8 +76,6 @@
                     echo "<p class='success-message'>2. Login using your registered Email and Password</p>";
                     echo "<p class='success-message'>3. Fill Up the Admission Form.</p>";
                     echo "<button class='proceed-button' onclick=\"window.location.href='rules.php'\">Proceed to Dashboard</button>";
-                   
-                   
                 } else {
                     echo "<img class='celebration' src='../image/nblogo.png' alt='Congratulations'>";
                     echo "<p class='failure-score'>$message</p>";
@@ -86,8 +83,8 @@
                     echo "<p class='failure-message'>1. Visit college for further discussion.</p>";
                     echo "<p class='failure-message'>2. Bring any identity card for verification.</p>";
                     echo "<p class='failure-message'>3. Sorry Try next time.</p>";
+                    echo "<button class='proceed-button' onclick=\"window.location.href='rules.php'\">Proceed to Dashboard</button>";
                     ?>
-                    <button class="proceed-button" href="rules.php">Proceed to Dashboard</button>";
                     <?php
                 }
             } else {
@@ -96,6 +93,5 @@
             }
         ?>
     </div>
-      
 </body>
 </html>

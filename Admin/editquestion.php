@@ -8,26 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="courseapply.css">
-    <style>
-        input[type=submit] {
-            background-color:#0b0d92d2;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        input[type=submit]:hover {
-            cursor: pointer;
-            background-color:#0b0d92a3;
-        }
-    </style> 
+    <link rel="stylesheet" href="editquestioncss.css">
 </head>
 
 <body>
@@ -73,7 +54,7 @@
     </div>
     <div class="flex-container">
     <div>
- <h2>Edit Questions</h2>
+ <h1 style="line-height:80px;">Edit Questions</h1>
     <?php
     include '../LogIn/db.php';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -105,26 +86,27 @@
     if (mysqli_num_rows($result) > 0) {
         echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
         while($row = mysqli_fetch_assoc($result)) {
-            
+            echo "<div class='question'>";
             echo "<label for='question_" . $row["ID"] . "'>Question:</label><br>";
-            echo "<input type='text' id='question_" . $row["ID"] . "' name='question_" . $row["ID"] . "' value='" . $row["question"] . "' 
-            style='width: 800px;height:40px;color:white;background-color:#0b0d92d2;padding-left:15px;font-size: large;border-style:none;'><br>";
-
+            echo "<input type='text' id='question_" . $row["ID"] . "' name='question_" . $row["ID"] . "' value='" . $row["question"] . " '><br>";
+            echo "</div>";
+            echo "<div class='options'>";
             echo "<label for='option1_" . $row["ID"] . "'>Option 1:</label><br>";
-            echo "<input type='text' id='option1_" . $row["ID"] . "' name='option1_" . $row["ID"] . "' value='" . $row["option1"] . "' style='width: 500px;height:30px;padding-left:15px;'><br>";
+            echo "<input type='text' id='option1_" . $row["ID"] . "' name='option1_" . $row["ID"] . "' value='" . $row["option1"] . "' ><br>";
 
             echo "<label for='option2_" . $row["ID"] . "'>Option 2:</label><br>";
-            echo "<input type='text' id='option2_" . $row["ID"] . "' name='option2_" . $row["ID"] . "' value='" . $row["option2"] . "'style='width: 500px;height:30px;padding-left:15px;'><br>";
+            echo "<input type='text' id='option2_" . $row["ID"] . "' name='option2_" . $row["ID"] . "' value='" . $row["option2"] . "'><br>";
 
             echo "<label for='option3_" . $row["ID"] . "'>Option 3:</label><br>";
-            echo "<input type='text' id='option3_" . $row["ID"] . "' name='option3_" . $row["ID"] . "' value='" . $row["option3"] . "'style='width: 500px;height:30px;padding-left:15px;'><br>";
+            echo "<input type='text' id='option3_" . $row["ID"] . "' name='option3_" . $row["ID"] . "' value='" . $row["option3"] . "'><br>";
 
             echo "<label for='option4_" . $row["ID"] . "'>Option 4:</label><br>";
-            echo "<input type='text' id='option4_" . $row["ID"] . "' name='option4_" . $row["ID"] . "' value='" . $row["option4"] . "'style='width: 500px;height:30px;padding-left:15px;'><br>";
-
+            echo "<input type='text' id='option4_" . $row["ID"] . "' name='option4_" . $row["ID"] . "' value='" . $row["option4"] . "'><br>";
+            echo "</div>";
+            echo "<div class='correct'>";
             echo "<label for='correct_answer_" . $row["ID"] . "'>Correct Answer:</label><br>";
-            echo "<input type='text' id='correct_answer_" . $row["ID"] . "' name='correct_answer_" . $row["ID"] . "' value='" . $row["correct_answer"] . "'
-            style='width: 300px;height:30px;padding-left:15px;background-color:green;color:white;'><br><br>";
+            echo "<input type='text' id='correct_answer_" . $row["ID"] . "' name='correct_answer_" . $row["ID"] . "' value='" . $row["correct_answer"] . "'><br><br>";
+            echo "</div>";
         }
         echo '<input type="submit" value="Update Questions">';
         echo '</form>';
@@ -137,25 +119,28 @@
 </div>
 <div>
     <form action="addquestion.php" method="post">
-    <h2>Add a New Question</h2>
+    <h1 style="line-height:80px;">Add a New Question</h1>
+        <div class="question">
         <label for="question">Question:</label><br>
-        <input type="text" id="question" name="question" style='width: 800px;height:40px;padding-left:15px;font-size: large;' required><br><br>
-        
+        <input type="text" id="question" name="question" required><br><br>
+</div>
+<div class="options">
         <label for="option1">Option 1:</label><br>
-        <input type="text" id="option1" name="option1" style='width: 500px;height:30px;padding-left:15px;' required><br><br>
-        
+        <input type="text" id="option1" name="option1" required><br><br>
+
         <label for="option2">Option 2:</label><br>
-        <input type="text" id="option2" name="option2" style='width: 500px;height:30px;padding-left:15px;' required><br><br>
+        <input type="text" id="option2" name="option2" required><br><br>
         
         <label for="option3">Option 3:</label><br>
-        <input type="text" id="option3" name="option3" style='width: 500px;height:30px;padding-left:15px;' required><br><br>
+        <input type="text" id="option3" name="option3" required><br><br>
         
         <label for="option4">Option 4:</label><br>
-        <input type="text" id="option4" name="option4" style='width: 500px;height:30px;padding-left:15px;' required><br><br>
-        
+        <input type="text" id="option4" name="option4" required><br><br>
+</div>
+<div class="correct">
         <label for="correct_answer">Correct Answer:</label><br>
-        <input type="text" id="correct_answer" name="correct_answer" style='width: 300px;height:30px;padding-left:15px;' required><br><br>
-        
+        <input type="text" id="correct_answer" name="correct_answer" required><br><br>
+</div>
         <input type="submit" value="Submit">
     </form>
 </div>

@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="../styles.css">
     <style>
         .heading-container{
-        margin-left:310px ;  
+        margin-left:320px ;  
         padding-top: 100px;
-        padding-bottom: 10px;
         font-size: xx-large;
         font-weight:bold;
 
@@ -25,21 +24,20 @@
         .report-container > div {
             background-color: #fffefef6;
             margin-left: 310px;
-            padding: 20px;
-            margin-top: 10px;
+            padding: 20px 30px;
+            margin-top: 20px;
             border-radius: 20px;
             width: 800px;
         }
         .report-button{
-            height: 45px;
-            width: 140px;
+            height: 35px;
+            width: 110px;
             margin-top: 20px;
             margin-left:20px;
             color: white;
             background-color:#0b0d92d2;
             border-style: none;
             border-radius: 10px;
-            cursor: pointer;
         }
         .report-button a{
             text-decoration: none;
@@ -47,6 +45,7 @@
         }
         button:hover{
             background-color: #0b0d929e;
+            cursor: pointer;
   }
     </style>
 </head>
@@ -92,7 +91,7 @@
         <a href="../LogIn/logout.php"><button onclick="return confirm('Are you sure you want to logout?')"
             type="submit">Logout</button></a>    
     </div>
-    <div class="heading-container">Reports</div>
+    <div class="heading-container">Inquiries</div>
     <div class="report-container">
         <?php
             include '../LogIn/db.php';
@@ -117,7 +116,7 @@
                     echo '<p>Name: ' . $row["name"] . '</p>';
                     echo '<p>Email: ' . $row["email"] . '</p>';
                     echo '<p>Message: ' . $row["message"] . '</p>';
-                    echo '<button class="report-button"><a href="mailto:' . $row["email"] . '">Reply</a></button>';
+                    echo '<button class="report-button" onclick="replyToEmail(\'' . $row["email"] . '\')">Reply</button>';
                     echo '<button class="report-button" onclick="confirmDelete(' . $row["report_id"] . ')">Delete</button>';
                     echo '</div>'; 
                 }
@@ -129,11 +128,17 @@
         ?>
     </div>
     <script>
-    function confirmDelete(report_id) {
-        if (confirm("Are you sure you want to delete this report?")) {
-            window.location.href = 'reports.php?action=delete&report_id=' + report_id;
+        function confirmDelete(report_id) {
+            if (confirm("Are you sure you want to delete this report?")) {
+                window.location.href = 'reports.php?action=delete&report_id=' + report_id;
+            }
         }
-    }
-</script>
+
+        function replyToEmail(email) {
+            var encodedEmail = encodeURIComponent(email);
+            var mailtoLink = 'mailto:' + encodedEmail;
+            window.open(mailtoLink, '_blank');
+        }
+    </script>
 </body>
 </html>

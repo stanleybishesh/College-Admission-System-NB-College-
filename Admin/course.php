@@ -54,7 +54,7 @@
     </div>
     <div class="flex-container">
         <div>
-            <h2>COURSE AVAILABLE</h2>
+            <h2>COURSES AVAILABLE</h2>
       <div class="section">
         <h1>BCA</h1>
         <h3>Department of Humanities and Social Science<h3>

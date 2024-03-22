@@ -29,6 +29,7 @@ input[type=submit]:hover {
     background-color:#0b0d92a3;
 }
 .question input[type=text] {
+    border-radius: 5px;
     width: 800px;
     height:40px;
     color:white;
@@ -50,7 +51,7 @@ input[type=submit]:hover {
     background-color:#cac6c6d2;
     padding-left:15px;
     font-size: large;
-    border-radius: 18px;
+    border-radius: 8px;
     border-style: none;
 }
 .options label{
@@ -59,10 +60,10 @@ font-weight: bold;
 line-height: 40px;
 }
 .correct input[type=text] {
-    width: 200px;
+    width: 150px;
     height:40px;
     color:rgb(0, 0, 0);
-    background-color:#038803d2;
+    background-color:#2cff2cb1;
     font-size: large;
     border-style:none;
     border-radius: 18px;

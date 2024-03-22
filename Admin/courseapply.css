@@ -16,14 +16,20 @@
     }
 
 .section{
-    background-color: rgb(197,227,231);
-    padding: 20px;
+    background-color: rgba(15, 12, 92, 0.134);
+    padding: 25px 30px;
     margin-bottom: 20px;
+}
+.section h1{
+    color: rgb(0, 0, 110);
+}
+.section h3{
+    color: rgba(0, 0, 0, 0.526);
 }
 
 .section button {
-    height: 45px;
-    width: 140px;
+    height: 38px;
+    width: 125px;
     margin-top: 20px;
     color: white;
     background-color:#0b0d92d2;
@@ -32,5 +38,12 @@
     margin-right: 10px;
     cursor: pointer;
 }
+.section button:hover{
+    background-color: #0b0d929e;
+    cursor: pointer;
+  }
+  .section button:active{
+    color: yellow;
+  }
 
 

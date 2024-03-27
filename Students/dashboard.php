@@ -107,7 +107,7 @@ if (strlen($_SESSION['result_id']) == 0) {
                     $admittedQuery = mysqli_query($con, "SELECT * FROM admitted_users WHERE admission_users_id = '{$applicationRow['id']}'");
                     $isAdmitted = mysqli_num_rows($admittedQuery) > 0;
                     if ($isAdmitted) {
-                        echo "<td><a href='paymentSuccess.php'><i class='fas fa-solid fa-dollar-sign'></i> Payment</a></td>";
+                        echo "<td><a href='paymentSuccess.php'><i class='fas fa-solid fa-dollar-sign'></i> Fee Receipt</a></td>";
                     } else {
                         echo "<td>Fees not paid</td>";
                     }

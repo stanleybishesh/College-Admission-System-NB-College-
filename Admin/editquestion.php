@@ -24,7 +24,7 @@
         </a>
         <a href="regUsers.php">
             <i class="fas fa-solid fa-users"></i>
-            <span>Registered Users</span>
+            <span>Admitted Students</span>
         </a>
         <a href="application.php">
             <i class="fas fa-solid fa-folder-open"></i>

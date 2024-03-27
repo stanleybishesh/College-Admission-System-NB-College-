@@ -123,12 +123,12 @@ if (strlen($_SESSION['uid']==0)) {
         <div class="auth-form">
             <div class="email-wrapper">
                 <label for="email">Email:</label>
-               <input type="email" name="email" id="email">
+               <input type="email" name="email" id="email" required>
             </div>
 
            <div class="email-wrapper">
                <label for="username">Username:</label>
-               <input type="text" name="username" id="username">
+               <input type="text" name="username" id="username" required>
             </div>
         </div>
         <div class="questions-wrapper">
